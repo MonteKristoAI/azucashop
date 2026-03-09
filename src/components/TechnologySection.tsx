@@ -10,9 +10,9 @@ const stats = [
 
 const TechnologySection = () => {
   return (
-    <section id="technology" className="section-spacing">
+    <section id="technology" className="py-28 md:py-36 lg:py-44">
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
-        {/* Header block — fully stacked vertical */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,26 +20,23 @@ const TechnologySection = () => {
           transition={{ duration: 1.2, ease }}
         >
           <div className="hr-accent mb-8" />
-          <p className="label-text mb-12">Technology</p>
+          <p className="label-text mb-10">Technology</p>
 
           <h2
             className="font-display font-bold uppercase text-foreground leading-[0.88]"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", letterSpacing: "0.1em" }}
+            style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)", letterSpacing: "0.1em" }}
           >
             Hits<br />
             <span className="text-accent">Different</span>
           </h2>
 
-          <p className="body-large max-w-md mt-10 md:mt-14">
+          <p className="text-base md:text-lg text-foreground/45 leading-[1.8] max-w-lg mt-8">
             TiME Infusion® delivers cannabinoids faster than traditional edibles. No&nbsp;waiting.
           </p>
         </motion.div>
 
-        {/* Spacer */}
-        <div className="h-20 md:h-28" />
-
-        {/* Stats — vertical stacked blocks in 3-col grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 max-w-4xl mx-auto text-center">
+        {/* Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 max-w-4xl mt-16 md:mt-24 text-center md:text-left">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.unit}
@@ -47,15 +44,15 @@ const TechnologySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: i * 0.1, ease }}
-              className="flex flex-col items-center gap-3"
+              className="flex flex-col items-center md:items-start gap-2"
             >
-              <span className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-none">
+              <span className="font-display text-4xl md:text-5xl font-extrabold text-accent leading-none text-glow-teal">
                 {stat.number}
               </span>
-              <span className="text-[10px] tracking-[0.4em] uppercase text-foreground/40 mt-1">
+              <span className="text-xs md:text-sm tracking-[0.3em] uppercase text-foreground/50 mt-2">
                 {stat.unit}
               </span>
-              <p className="text-xs md:text-sm text-muted-foreground/70 leading-relaxed mt-1 max-w-[200px]">
+              <p className="text-sm md:text-base text-foreground/35 leading-relaxed mt-1">
                 {stat.text}
               </p>
             </motion.div>
