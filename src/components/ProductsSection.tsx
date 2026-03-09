@@ -47,10 +47,10 @@ const ProductsSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2 }}
-          className="mb-20 md:mb-28"
+          className="mb-28 md:mb-36"
         >
-          <div className="hr-accent mb-6" />
-          <p className="label-text">Choose Your Experience</p>
+          <div className="hr-accent mb-8" />
+          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-[0.25em] uppercase text-foreground/80">Choose Your Experience</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
