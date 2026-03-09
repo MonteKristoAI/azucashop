@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import { ShoppingBag } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -13,6 +15,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { totalItems, setIsOpen: setCartOpen } = useCart();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/10">
@@ -37,26 +40,50 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-5">
+          <button
+            onClick={() => setCartOpen(true)}
+            className="relative text-foreground/60 hover:text-foreground transition-colors"
+          >
+            <ShoppingBag className="w-4.5 h-4.5" />
+            {totalItems > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-neon-pink text-primary-foreground text-[8px] font-bold flex items-center justify-center rounded-full">
+                {totalItems}
+              </span>
+            )}
+          </button>
           <Link
-            to="/contact"
+            to="/shop"
             className="px-5 py-2 bg-neon-pink text-primary-foreground text-[10px] tracking-[0.2em] uppercase font-medium hover:shadow-[0_0_20px_hsl(var(--neon-pink)/0.25)] transition-all duration-300"
           >
-            Partner With Us
+            Shop Now
           </Link>
         </div>
 
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-foreground"
-          aria-label="Toggle menu"
-        >
-          <div className="w-5 flex flex-col gap-1.5">
-            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
-            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""}`} />
-          </div>
-        </button>
+        <div className="flex md:hidden items-center gap-4">
+          <button
+            onClick={() => setCartOpen(true)}
+            className="relative text-foreground/60 hover:text-foreground transition-colors"
+          >
+            <ShoppingBag className="w-4 h-4" />
+            {totalItems > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-neon-pink text-primary-foreground text-[8px] font-bold flex items-center justify-center rounded-full">
+                {totalItems}
+              </span>
+            )}
+          </button>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-foreground"
+            aria-label="Toggle menu"
+          >
+            <div className="w-5 flex flex-col gap-1.5">
+              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
+              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""}`} />
+            </div>
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -82,11 +109,11 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link
-                to="/contact"
+                to="/shop"
                 onClick={() => setIsOpen(false)}
                 className="mt-2 px-6 py-3 bg-neon-pink text-primary-foreground text-xs tracking-[0.2em] uppercase font-medium text-center"
               >
-                Partner With Us
+                Shop Now
               </Link>
             </div>
           </motion.div>
