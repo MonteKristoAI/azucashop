@@ -69,7 +69,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.4, delay: 0.7, ease }}
-          className="font-display text-xs md:text-sm tracking-[0.45em] uppercase text-muted-foreground/70 mt-8 md:mt-10"
+          className="font-display text-sm md:text-base tracking-[0.45em] uppercase text-foreground/45 mt-10 md:mt-14"
         >
           The Social Gummy
         </motion.p>
