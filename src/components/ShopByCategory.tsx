@@ -69,7 +69,7 @@ const ShopByCategory = () => {
                     {cat.description}
                   </p>
                   <span className={`inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase ${color.text} group-hover:gap-3 transition-all duration-300`}>
-                    Shop Now <ArrowRight className="w-3.5 h-3.5" />
+                    Explore <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </Link>
               </motion.div>
