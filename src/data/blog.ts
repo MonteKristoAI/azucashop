@@ -28,6 +28,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-02-22",
     readTime: "6 min",
     author: "Azuca Team",
+    image: "/images/blog-delta9.jpg",
   },
   {
     id: "social-consumption-revolution",
