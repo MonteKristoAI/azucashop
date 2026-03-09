@@ -120,6 +120,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 67,
     variants: ["2.5mg × 1", "5mg × 1", "5mg × 4-pack"],
+    image: "/images/grapefruit-sparkling.jpg",
   },
   {
     id: "peach-mango-elixir",
