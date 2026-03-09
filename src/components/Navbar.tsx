@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag } from "lucide-react";
 
 const navLinks = [
   { label: "Home", to: "/" },
-  { label: "Shop", to: "/shop" },
+  { label: "Technology", to: "/about" },
+  { label: "Products", to: "/shop" },
   { label: "Blog", to: "/blog" },
-  { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -18,12 +17,10 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/10">
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 h-16 flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="font-display text-sm font-bold tracking-[0.35em] uppercase text-foreground">
-          Entourage
+          Azuca
         </Link>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -40,39 +37,28 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Right side */}
-        <div className="hidden md:flex items-center gap-5">
-          <button className="relative text-foreground/50 hover:text-foreground transition-colors duration-300" aria-label="Cart">
-            <ShoppingBag className="w-4.5 h-4.5" />
-          </button>
+        <div className="hidden md:flex items-center">
           <Link
-            to="/shop"
+            to="/contact"
             className="px-5 py-2 bg-neon-pink text-primary-foreground text-[10px] tracking-[0.2em] uppercase font-medium hover:shadow-[0_0_20px_hsl(var(--neon-pink)/0.25)] transition-all duration-300"
           >
-            Shop Now
+            Partner With Us
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <div className="flex md:hidden items-center gap-4">
-          <button className="text-foreground/50" aria-label="Cart">
-            <ShoppingBag className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-foreground"
-            aria-label="Toggle menu"
-          >
-            <div className="w-5 flex flex-col gap-1.5">
-              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
-              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""}`} />
-            </div>
-          </button>
-        </div>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-foreground"
+          aria-label="Toggle menu"
+        >
+          <div className="w-5 flex flex-col gap-1.5">
+            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
+            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""}`} />
+          </div>
+        </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -96,11 +82,11 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link
-                to="/shop"
+                to="/contact"
                 onClick={() => setIsOpen(false)}
                 className="mt-2 px-6 py-3 bg-neon-pink text-primary-foreground text-xs tracking-[0.2em] uppercase font-medium text-center"
               >
-                Shop Now
+                Partner With Us
               </Link>
             </div>
           </motion.div>

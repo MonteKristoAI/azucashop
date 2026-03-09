@@ -10,30 +10,34 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const faqs = [
   {
-    q: "What is hemp-derived THC?",
-    a: "Hemp-derived THC is extracted from legally grown hemp plants containing less than 0.3% Delta-9 THC by dry weight, as defined by the 2018 Farm Bill. Our products comply with all federal regulations.",
+    q: "What is TiME INFUSION®?",
+    a: "TiME INFUSION® stands for Thermodynamic individual Molecular Encapsulation. It is a proprietary process that coats individual cannabinoid molecules with a hydrophilic (water-friendly) shell, enabling rapid absorption through soft tissues instead of the digestive system.",
   },
   {
-    q: "Are these products legal?",
-    a: "Yes. All our products are derived from hemp and comply with the 2018 Farm Bill. They contain less than 0.3% Delta-9 THC by dry weight. However, state laws vary — please check your local regulations before purchasing.",
+    q: "How is this different from nano-emulsion?",
+    a: "Nano-emulsion uses small globs of oil suspended in liquid. TiME INFUSION® individually encapsulates each cannabinoid molecule at the molecular level, creating truly hydrophilic compounds — not smaller oil droplets. This results in better absorption, taste, and stability.",
   },
   {
-    q: "How long do effects take?",
-    a: "Thanks to our advanced infusion technology, most customers feel effects within 5–15 minutes, compared to 45–90 minutes with traditional edibles. Individual results may vary.",
+    q: "How fast do TiME INFUSION® products take effect?",
+    a: "Products made with TiME INFUSION® typically deliver first effects within 5–15 minutes, compared to 30–90+ minutes for traditional edibles. This is because hydrophilic cannabinoids absorb through soft tissues, bypassing the slow digestive pathway.",
   },
   {
-    q: "Are products lab tested?",
-    a: "Absolutely. Every batch is third-party lab tested for potency, purity, and safety. Certificates of Analysis (COA) are available for all products on our website.",
+    q: "What is the difference between Delta-9-THC and 11-Hydroxy-THC?",
+    a: "Delta-9-THC is the primary psychoactive compound in cannabis that creates an uplifting, euphoric effect similar to smoking. Traditional edibles convert Delta-9-THC into 11-Hydroxy-THC through liver metabolism, which produces a heavier, more sedative 'couch lock' experience. TiME INFUSION® preserves Delta-9-THC by bypassing liver metabolism.",
   },
   {
-    q: "Where do you ship?",
-    a: "We ship to all 50 states where hemp-derived products are permitted. Orders typically arrive within 3–5 business days. Free shipping is available on orders over $50.",
+    q: "What product formats does TiME INFUSION® support?",
+    a: "TiME INFUSION® powers fast-acting edibles (gummies, chocolates, confections), cannabis beverages, and culinary cannabis ingredients. The technology is shelf-stable, temperature-stable, and pH-stable, making it suitable for a wide range of product formulations.",
+  },
+  {
+    q: "How can brands partner with Azuca?",
+    a: "Azuca provides TiME INFUSION® as a premium ingredient platform for cannabis brands. Partners receive co-branding assets, marketing support, budtender training, and quarterly strategy sessions. Contact our partnerships team to learn more.",
   },
 ];
 
 const FAQSection = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 border-t border-border/10">
       <div className="max-w-[800px] mx-auto px-8 md:px-16 lg:px-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +53,7 @@ const FAQSection = () => {
             Questions?
           </h2>
           <p className="text-sm text-muted-foreground mt-3">
-            Everything you need to know about our products.
+            Everything you need to know about TiME INFUSION® technology.
           </p>
         </motion.div>
 
