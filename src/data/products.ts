@@ -141,6 +141,7 @@ export const products: Product[] = [
     badge: "Award Winner",
     variants: ["5mg × 8pc", "10mg × 8pc"],
     featured: true,
+    image: "/images/dark-chocolate.jpg",
   },
   {
     id: "milk-chocolate-caramel",
