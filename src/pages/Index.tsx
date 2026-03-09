@@ -1,32 +1,36 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import WhyItMatters from "@/components/WhyItMatters";
+import TechnologySection from "@/components/TechnologySection";
+import EdiblesProblem from "@/components/EdiblesProblem";
 import ScienceSection from "@/components/ScienceSection";
-import ConsumerBenefits from "@/components/ConsumerBenefits";
-import FeaturedProducts from "@/components/FeaturedProducts";
-import SocialExperience from "@/components/SocialExperience";
-import ProductPlatform from "@/components/ProductPlatform";
-import IndustryPartners from "@/components/IndustryPartners";
-import FAQSection from "@/components/FAQSection";
-import PartnerCTA from "@/components/PartnerCTA";
+import ProductBenefits from "@/components/ProductBenefits";
+import SocialConsumption from "@/components/SocialConsumption";
+import TargetAudience from "@/components/TargetAudience";
+import VideoSection from "@/components/VideoSection";
+import PartnerSupport from "@/components/PartnerSupport";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <CartDrawer />
       <HeroSection />
-      <WhyItMatters />
+      <TechnologySection />
+      <EdiblesProblem />
       <ScienceSection />
-      <ConsumerBenefits />
-      <FeaturedProducts />
-      <SocialExperience />
-      <ProductPlatform />
-      <IndustryPartners />
-      <FAQSection />
-      <PartnerCTA />
+      <div id="benefits">
+        <ProductBenefits />
+      </div>
+      <SocialConsumption />
+      <div id="audience">
+        <TargetAudience />
+      </div>
+      <VideoSection />
+      <div id="partners">
+        <PartnerSupport />
+      </div>
+      <ContactSection />
       <Footer />
     </div>
   );
