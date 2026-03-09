@@ -159,6 +159,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 112,
     variants: ["5mg × 8pc", "10mg × 8pc"],
+    image: "/images/milk-chocolate-caramel.jpg",
   },
   {
     id: "white-chocolate-raspberry",
