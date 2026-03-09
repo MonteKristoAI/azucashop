@@ -18,7 +18,7 @@ const HeroSection = () => {
         }}
       />
       {/* Overlay — slightly less opaque to let the image breathe */}
-      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-background/60" />
       {/* Vignette */}
       <div
         className="absolute inset-0"
@@ -47,7 +47,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 0.3, ease }}
-          className="label-text mb-10 md:mb-14"
+          className="text-[11px] md:text-xs tracking-[0.4em] uppercase text-foreground/50 mb-12 md:mb-16"
         >
           Fast-Acting Cannabis Gummies
         </motion.p>
@@ -56,10 +56,10 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 80, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.6, ease }}
-          className="font-display font-extrabold uppercase text-foreground leading-[0.82] mx-auto"
+          className="font-display font-extrabold uppercase text-foreground leading-[0.85] mx-auto"
           style={{
-            fontSize: "clamp(3rem, 9.5vw, 8.5rem)",
-            letterSpacing: "0.22em",
+            fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
+            letterSpacing: "0.25em",
           }}
         >
           Entourage
@@ -69,7 +69,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.4, delay: 0.7, ease }}
-          className="font-display text-xs md:text-sm tracking-[0.45em] uppercase text-muted-foreground/70 mt-8 md:mt-10"
+          className="font-display text-sm md:text-base tracking-[0.45em] uppercase text-foreground/45 mt-10 md:mt-14"
         >
           The Social Gummy
         </motion.p>
@@ -78,8 +78,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.1, ease }}
-          className="text-muted-foreground/35 text-[11px] md:text-xs tracking-[0.2em] mt-5 max-w-[260px] mx-auto leading-[2]"
-          style={{ fontStyle: "italic" }}
+          className="text-foreground/25 text-xs md:text-sm tracking-[0.15em] mt-6 md:mt-8 max-w-[300px] mx-auto leading-[1.9]"
         >
           Feel it in minutes. Share the moment.
         </motion.p>
