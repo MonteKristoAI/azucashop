@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const points = [
+const stats = [
   { number: "5–15", unit: "Minutes", text: "Feel it when the moment calls." },
   { number: "3×", unit: "Absorption", text: "Water-friendly cannabinoids." },
   { number: "100%", unit: "Predictable", text: "Consistent. Every time." },
@@ -12,15 +12,25 @@ const TechnologySection = () => {
   return (
     <section id="technology" className="section-spacing">
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 mb-36 md:mb-48">
+        {/* Header block */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease }}
+          className="mb-16 md:mb-20"
+        >
+          <div className="hr-accent mb-8" />
+          <p className="label-text mb-14 md:mb-16">Technology</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-32 mb-32 md:mb-44 lg:mb-56">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease }}
           >
-            <div className="hr-accent mb-6" />
-            <p className="label-text mb-12">Technology</p>
             <h2 className="heading-section text-foreground">
               Hits
               <br />
@@ -41,25 +51,30 @@ const TechnologySection = () => {
           </motion.div>
         </div>
 
-        <div className="border-t border-border/40">
-          {points.map((point, i) => (
+        {/* Stats rows */}
+        <div>
+          {stats.map((stat, i) => (
             <motion.div
-              key={point.unit}
+              key={stat.unit}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: i * 0.1, ease }}
-              className="border-b border-border/20 py-12 md:py-16 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-16 items-baseline"
+              transition={{ duration: 0.9, delay: i * 0.08, ease }}
+              className="border-t border-border/15 py-14 md:py-20 grid grid-cols-1 md:grid-cols-[1fr_1fr_1.5fr] gap-4 md:gap-12 items-baseline"
             >
-              <span className="font-display text-5xl md:text-6xl font-extrabold text-foreground leading-none">
-                {point.number}
+              <span className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-none tracking-wide">
+                {stat.number}
               </span>
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8">
-                <span className="label-text">{point.unit}</span>
-                <p className="text-sm text-muted-foreground max-w-xs">{point.text}</p>
-              </div>
+              <span className="text-[10px] tracking-[0.4em] uppercase text-foreground/30">
+                {stat.unit}
+              </span>
+              <p className="text-sm text-muted-foreground leading-relaxed md:text-right">
+                {stat.text}
+              </p>
             </motion.div>
           ))}
+          {/* Bottom border for last row */}
+          <div className="border-t border-border/15" />
         </div>
       </div>
     </section>
