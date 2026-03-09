@@ -1,11 +1,13 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ProductsSection from "@/components/ProductsSection";
-import TechnologySection from "@/components/TechnologySection";
-import SocialSection from "@/components/SocialSection";
-import DetailsSection from "@/components/DetailsSection";
-import AboutSection from "@/components/AboutSection";
-import CTASection from "@/components/CTASection";
+import ShopByCategory from "@/components/ShopByCategory";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import ProductBenefits from "@/components/ProductBenefits";
+import BrandStory from "@/components/BrandStory";
+import CustomerReviews from "@/components/CustomerReviews";
+import BlogPreview from "@/components/BlogPreview";
+import FAQSection from "@/components/FAQSection";
+import EmailSignup from "@/components/EmailSignup";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -13,12 +15,14 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <ProductsSection />
-      <TechnologySection />
-      <SocialSection />
-      <DetailsSection />
-      <AboutSection />
-      <CTASection />
+      <ShopByCategory />
+      <FeaturedProducts />
+      <ProductBenefits />
+      <BrandStory />
+      <CustomerReviews />
+      <BlogPreview />
+      <FAQSection />
+      <EmailSignup />
       <Footer />
     </div>
   );
