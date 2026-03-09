@@ -50,7 +50,7 @@ const Shop = () => {
             Shop
           </h1>
           <p className="text-muted-foreground max-w-lg">
-            Browse our complete collection of premium coffee, tea, and brewing accessories.
+            Browse our complete collection of fast-acting cannabis gummies, beverages, and chocolates.
           </p>
         </motion.div>
 

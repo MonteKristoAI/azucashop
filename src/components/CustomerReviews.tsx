@@ -7,7 +7,7 @@ const CustomerReviews = () => (
     <div className="section-container py-20">
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
         <h2 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-3">What People Are Saying</h2>
-        <p className="text-muted-foreground max-w-md mx-auto">Join thousands of happy EMBER customers worldwide.</p>
+        <p className="text-muted-foreground max-w-md mx-auto">Real experiences from consumers who made the switch to TiME INFUSION®.</p>
       </motion.div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {reviews.map((review, i) => (

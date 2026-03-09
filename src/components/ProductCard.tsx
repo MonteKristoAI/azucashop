@@ -5,9 +5,9 @@ import { useCartStore } from "@/store/cartStore";
 import { motion } from "framer-motion";
 
 const categoryColors: Record<string, string> = {
-  coffee: "from-amber-900/30 to-orange-900/10",
-  tea: "from-emerald-900/30 to-teal-900/10",
-  accessories: "from-slate-700/30 to-indigo-900/10",
+  gummies: "from-pink-900/30 to-rose-900/10",
+  beverages: "from-cyan-900/30 to-teal-900/10",
+  chocolates: "from-amber-900/30 to-orange-900/10",
 };
 
 const ProductCard = ({ product, index = 0 }: { product: Product; index?: number }) => {
@@ -23,15 +23,20 @@ const ProductCard = ({ product, index = 0 }: { product: Product; index?: number 
     >
       <div className="rounded-xl border border-border bg-card overflow-hidden hover-lift">
         <Link to={`/product/${product.id}`}>
-          <div className={`relative aspect-[4/3] bg-gradient-to-br ${categoryColors[product.category] || categoryColors.coffee} flex items-center justify-center`}>
+          <div className={`relative aspect-[4/3] bg-gradient-to-br ${categoryColors[product.category] || categoryColors.gummies} flex items-center justify-center overflow-hidden`}>
+            {product.image && (
+              <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            )}
             {product.badge && (
-              <span className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wider rounded-md">
+              <span className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wider rounded-md z-10">
                 {product.badge}
               </span>
             )}
-            <span className="font-display text-2xl font-extrabold uppercase tracking-wider text-foreground/10 group-hover:text-foreground/20 transition-colors duration-500 text-center px-4">
-              {product.name}
-            </span>
+            {!product.image && (
+              <span className="font-display text-2xl font-extrabold uppercase tracking-wider text-foreground/10 group-hover:text-foreground/20 transition-colors duration-500 text-center px-4">
+                {product.name}
+              </span>
+            )}
           </div>
         </Link>
 

@@ -6,12 +6,12 @@ const Footer = () => (
     <div className="section-container py-16">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <Link to="/" className="font-display font-extrabold text-lg text-foreground">EMBER</Link>
-          <p className="text-sm text-muted-foreground mt-3 leading-relaxed">Premium artisan coffee & tea. Ethically sourced, expertly roasted, delivered fresh.</p>
+          <Link to="/" className="font-display font-extrabold text-lg text-foreground">AZUCA</Link>
+          <p className="text-sm text-muted-foreground mt-3 leading-relaxed">Fast-acting cannabis products powered by TiME INFUSION® technology. Effects in 5–15 minutes.</p>
           <div className="flex gap-3 mt-5">
             <a href="#" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram"><Instagram className="w-4 h-4" /></a>
             <a href="#" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter"><Twitter className="w-4 h-4" /></a>
-            <a href="mailto:hello@ember.co" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Email"><Mail className="w-4 h-4" /></a>
+            <a href="mailto:partnerships@azucatime.com" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Email"><Mail className="w-4 h-4" /></a>
           </div>
         </div>
         <div>
@@ -25,7 +25,7 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-bold text-sm text-foreground mb-4">Categories</h4>
           <ul className="space-y-2.5">
-            {["Coffee","Tea","Accessories"].map(c=>(
+            {["Gummies","Beverages","Chocolates"].map(c=>(
               <li key={c}><Link to={`/shop?category=${c.toLowerCase()}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{c}</Link></li>
             ))}
           </ul>
@@ -40,7 +40,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-12 pt-6 border-t border-border text-center">
-        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} EMBER. All rights reserved. This is a demo store — no real transactions.</p>
+        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} AZUCA. All rights reserved. This is a demo store — no real transactions. Must be 21+ to purchase cannabis products.</p>
       </div>
     </div>
   </footer>

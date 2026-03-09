@@ -29,7 +29,7 @@ const Contact = () => {
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="space-y-6">
             <div className="aspect-[4/3] rounded-xl bg-card border border-border flex items-center justify-center"><div className="text-center"><MapPin className="w-8 h-8 text-primary/30 mx-auto mb-2" /><p className="text-sm text-muted-foreground">Map placeholder</p></div></div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-5 rounded-xl bg-card border border-border"><MailIcon className="w-5 h-5 text-primary mb-2" /><p className="text-sm font-medium text-foreground">Email</p><p className="text-xs text-muted-foreground mt-1">hello@ember.co</p></div>
+              <div className="p-5 rounded-xl bg-card border border-border"><MailIcon className="w-5 h-5 text-primary mb-2" /><p className="text-sm font-medium text-foreground">Email</p><p className="text-xs text-muted-foreground mt-1">partnerships@azucatime.com</p></div>
               <div className="p-5 rounded-xl bg-card border border-border"><Phone className="w-5 h-5 text-primary mb-2" /><p className="text-sm font-medium text-foreground">Phone</p><p className="text-xs text-muted-foreground mt-1">(555) 123-4567</p></div>
             </div>
           </motion.div>

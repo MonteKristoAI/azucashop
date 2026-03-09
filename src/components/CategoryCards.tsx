@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Coffee, Leaf, Package } from "lucide-react";
+import { Candy, Wine, Cookie } from "lucide-react";
 import { motion } from "framer-motion";
 import { categories } from "@/data/products";
 
-const icons = { coffee: Coffee, tea: Leaf, accessories: Package };
+const icons = { gummies: Candy, beverages: Wine, chocolates: Cookie };
 
 const CategoryCards = () => (
   <section className="section-container py-20">
@@ -18,7 +18,7 @@ const CategoryCards = () => (
         Shop by Category
       </h2>
       <p className="text-muted-foreground max-w-md mx-auto">
-        From bean to cup, leaf to pot — find your perfect match.
+        Premium cannabis products powered by TiME INFUSION® technology.
       </p>
     </motion.div>
 

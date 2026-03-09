@@ -31,7 +31,7 @@ const Checkout = () => {
             <CheckCircle2 className="w-16 h-16 text-primary mx-auto mb-6" />
             <h1 className="font-display font-extrabold text-3xl text-foreground mb-3">Order Confirmed!</h1>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              This is a demo store — no real order was placed. Thanks for exploring EMBER!
+              This is a demo store — no real order was placed. Thanks for exploring AZUCA!
             </p>
             <Button asChild><Link to="/shop">Continue Shopping</Link></Button>
           </motion.div>

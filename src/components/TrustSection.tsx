@@ -1,11 +1,11 @@
-import { Package, Truck, FlaskConical, Headphones } from "lucide-react";
+import { Zap, Droplets, FlaskConical, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const stats = [
-  { icon: Package, label: "500+ Products", desc: "Curated selection" },
-  { icon: Truck, label: "Free Shipping", desc: "On orders over $50" },
-  { icon: FlaskConical, label: "Lab Tested", desc: "Quality guaranteed" },
-  { icon: Headphones, label: "24/7 Support", desc: "Always here to help" },
+  { icon: Zap, label: "5–15 Min Onset", desc: "Fast-acting effects" },
+  { icon: Droplets, label: "Water-Soluble", desc: "Hydrophilic cannabinoids" },
+  { icon: FlaskConical, label: "18–22% Bioavailability", desc: "vs 2–6% traditional" },
+  { icon: ShieldCheck, label: "Shelf Stable", desc: "No seepage or crystallization" },
 ];
 
 const TrustSection = () => (

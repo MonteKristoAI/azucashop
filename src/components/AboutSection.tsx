@@ -1,11 +1,11 @@
-import { Sprout, Globe, Award, Heart } from "lucide-react";
+import { Atom, Beaker, Sparkles, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 const values = [
-  { icon: Sprout, title: "Ethically Sourced", desc: "Direct trade partnerships with farmers in 12+ countries, ensuring fair wages and sustainable practices." },
-  { icon: Globe, title: "Sustainably Packaged", desc: "Compostable bags, recyclable tins, and carbon-neutral shipping on every order." },
-  { icon: Award, title: "Expert Roasted", desc: "Small-batch roasting by certified Q-graders who taste every lot for quality and consistency." },
-  { icon: Heart, title: "Community First", desc: "1% of every purchase funds clean water projects in coffee-growing communities." },
+  { icon: Atom, title: "TiME INFUSION®", desc: "Thermodynamic Individual Molecular Encapsulation® creates hydrophilic cannabinoids for rapid soft-tissue absorption." },
+  { icon: Beaker, title: "Delta-9-THC Preserved", desc: "Soft tissue absorption preserves Delta-9-THC, minimizing conversion to 11-Hydroxy-THC for a lighter, euphoric experience." },
+  { icon: Sparkles, title: "Premium Effects", desc: "A more uplifting sensory experience like smoking cannabis — without the intense sedation known as couch-lock." },
+  { icon: Users, title: "Social Ready", desc: "Predictable onset and offset times make TiME INFUSION® products perfect for social consumption and events." },
 ];
 
 const AboutSection = () => (
@@ -18,16 +18,16 @@ const AboutSection = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-4">
-          More Than Just Coffee
+          The Science Behind TiME INFUSION®
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-6">
-          EMBER started in a tiny garage roastery with one mission: make exceptional coffee accessible to everyone. Today, we work directly with farmers across Ethiopia, Colombia, Indonesia, and Japan to source the world's finest beans and leaves.
+          Our innovative culinary cannabis ingredients & products taste great and take effect in 5–15 minutes vs. up to 90 minutes for traditional edibles. TiME INFUSION® creates a hydrophilic coating around oil molecules so products absorb through soft tissues, preempting first-pass metabolism.
         </p>
         <div className="grid grid-cols-3 gap-6">
           {[
-            ["12+", "Countries"],
-            ["50K+", "Happy Customers"],
-            ["8", "Years Roasting"],
+            ["5–15", "Min Onset"],
+            ["18–22%", "Bioavailability"],
+            ["Delta-9", "THC Preserved"],
           ].map(([num, label]) => (
             <div key={label}>
               <span className="font-display font-extrabold text-2xl text-primary">{num}</span>

@@ -19,7 +19,7 @@ const Index = () => (
     <NewsletterCTA />
     <div className="bg-secondary border-t border-border">
       <div className="section-container py-4 text-center">
-        <p className="text-[11px] text-muted-foreground">This is a demo e-commerce site. No real transactions are processed. All product information is fictional.</p>
+        <p className="text-[11px] text-muted-foreground">This is a demo e-commerce site. No real transactions are processed. Must be 21+ to purchase cannabis products. All product information is for demonstration purposes only.</p>
       </div>
     </div>
   </>
