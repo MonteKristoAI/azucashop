@@ -4,9 +4,10 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const products = [
   {
+    label: "01",
     name: "Relaxed",
-    dosage: "10mg THC · 5mg CBD",
-    terpenes: "Myrcene · Linalool",
+    dosage: "10mg THC | 5mg CBD",
+    description: "Calming terpene blend",
     glowClass: "glow-border-teal",
     glowBg: "glow-bg-teal",
     textGlow: "text-glow-teal",
@@ -14,9 +15,10 @@ const products = [
     dotBg: "bg-neon-teal",
   },
   {
+    label: "02",
     name: "Uplifted",
-    dosage: "10mg THC · 5mg CBD",
-    terpenes: "Limonene · Alpha Pinene",
+    dosage: "10mg THC | 5mg CBD",
+    description: "Energetic terpene blend",
     glowClass: "glow-border-pink",
     glowBg: "glow-bg-pink",
     textGlow: "text-glow-pink",
@@ -24,9 +26,10 @@ const products = [
     dotBg: "bg-neon-pink",
   },
   {
+    label: "03",
     name: "Balanced",
-    dosage: "25mg THC · 5mg CBD",
-    terpenes: "Limonene · Linalool",
+    dosage: "25mg THC | 5mg CBD",
+    description: "Balanced terpene experience",
     glowClass: "glow-border-gold",
     glowBg: "glow-bg-gold",
     textGlow: "text-glow-gold",
@@ -44,7 +47,7 @@ const ProductsSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2 }}
-          className="mb-24 md:mb-32"
+          className="mb-20 md:mb-28"
         >
           <div className="hr-accent mb-6" />
           <p className="label-text">Choose Your Experience</p>
@@ -54,29 +57,43 @@ const ProductsSection = () => {
           {products.map((product, i) => (
             <motion.div
               key={product.name}
-              initial={{ opacity: 0, y: 80 }}
+              initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 1, delay: i * 0.12, ease }}
-              whileHover={{ y: -6 }}
-              className={`relative border bg-card overflow-hidden flex flex-col items-center justify-center text-center transition-all duration-700 cursor-pointer group aspect-[3/4] ${product.glowClass}`}
+              whileHover={{ y: -4, scale: 1.02 }}
+              className={`relative border bg-card overflow-hidden flex flex-col items-center justify-between text-center transition-all duration-700 cursor-pointer group p-10 md:p-12 lg:p-14 aspect-[3/4] ${product.glowClass}`}
             >
-              {/* Radial glow background */}
+              {/* Radial glow background on hover */}
               <div className={`absolute inset-0 ${product.glowBg} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
 
-              {/* Glow dot */}
-              <div className={`w-1.5 h-1.5 rounded-full ${product.dotBg} opacity-40 group-hover:opacity-100 transition-opacity duration-700 mb-10`} />
+              {/* Top: label */}
+              <div className="relative z-10 flex flex-col items-center gap-3">
+                <div className={`w-1 h-1 rounded-full ${product.dotBg} opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
+                <span className="text-[10px] tracking-[0.4em] uppercase text-foreground/25 group-hover:text-foreground/40 transition-colors duration-500">
+                  {product.label}
+                </span>
+              </div>
 
+              {/* Center: product name */}
               <h3
-                className={`relative font-display text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase ${product.colorClass} ${product.textGlow} leading-[0.9]`}
-                style={{ letterSpacing: "0.12em" }}
+                className={`relative z-10 font-display font-extrabold uppercase ${product.colorClass} ${product.textGlow} leading-none`}
+                style={{
+                  fontSize: "clamp(2.2rem, 3.5vw, 3.5rem)",
+                  letterSpacing: "0.15em",
+                }}
               >
                 {product.name}
               </h3>
 
-              <div className="relative mt-10 space-y-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                <p className="text-xs tracking-[0.2em] text-foreground/50">{product.dosage}</p>
-                <p className="text-[10px] tracking-[0.15em] text-foreground/25">{product.terpenes}</p>
+              {/* Bottom: details */}
+              <div className="relative z-10 flex flex-col items-center gap-2">
+                <p className="text-[11px] tracking-[0.2em] text-foreground/40 group-hover:text-foreground/60 transition-colors duration-500">
+                  {product.dosage}
+                </p>
+                <p className="text-[10px] tracking-[0.15em] text-foreground/20 group-hover:text-foreground/35 transition-colors duration-500">
+                  {product.description}
+                </p>
               </div>
             </motion.div>
           ))}
