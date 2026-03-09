@@ -57,6 +57,7 @@ export const products: Product[] = [
     badge: "New",
     variants: ["5mg × 10pc", "10mg × 10pc", "25mg × 10pc"],
     featured: true,
+    image: "/images/citrus-gummies.jpg",
   },
   {
     id: "watermelon-chill-gummies",
