@@ -93,6 +93,7 @@ export const products: Product[] = [
     badge: "Staff Pick",
     variants: ["5mg × 1", "5mg × 4-pack"],
     featured: true,
+    image: "/images/lemon-seltzer.jpg",
   },
   {
     id: "berry-hibiscus-tonic",
