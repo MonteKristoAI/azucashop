@@ -4,7 +4,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const CTASection = () => {
   return (
-    <section className="py-44 md:py-60 lg:py-80">
+    <section className="py-24 md:py-32 lg:py-40">
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 60 }}
