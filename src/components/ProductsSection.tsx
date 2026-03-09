@@ -3,69 +3,65 @@ import { motion } from "framer-motion";
 const products = [
   {
     name: "Relaxed",
-    thc: "10mg THC",
-    cbd: "5mg CBD",
-    terpenes: "Myrcene, Linalool",
+    dosage: "10mg THC · 5mg CBD",
+    terpenes: "Myrcene · Linalool",
     glowClass: "glow-border-teal",
     textGlow: "text-glow-teal",
-    color: "neon-teal",
+    colorClass: "text-neon-teal",
   },
   {
     name: "Uplifted",
-    thc: "10mg THC",
-    cbd: "5mg CBD",
-    terpenes: "Limonene, Alpha Pinene",
+    dosage: "10mg THC · 5mg CBD",
+    terpenes: "Limonene · Alpha Pinene",
     glowClass: "glow-border-pink",
     textGlow: "text-glow-pink",
-    color: "neon-pink",
+    colorClass: "text-neon-pink",
   },
   {
     name: "Balanced",
-    thc: "25mg THC",
-    cbd: "5mg CBD",
-    terpenes: "Limonene, Linalool",
+    dosage: "25mg THC · 5mg CBD",
+    terpenes: "Limonene · Linalool",
     glowClass: "glow-border-gold",
     textGlow: "text-glow-gold",
-    color: "neon-gold",
+    colorClass: "text-neon-gold",
   },
 ];
 
 const ProductsSection = () => {
   return (
     <section id="products" className="section-spacing">
-      <div className="container mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-sm tracking-[0.3em] uppercase text-muted-foreground mb-16"
+          transition={{ duration: 1 }}
+          className="label-text mb-20 md:mb-28"
         >
           Choose Your Experience
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {products.map((product, i) => (
             <motion.div
               key={product.name}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.15 }}
-              whileHover={{ scale: 1.03 }}
-              className={`relative border bg-card p-10 md:p-12 flex flex-col items-center text-center transition-all duration-500 cursor-pointer ${product.glowClass}`}
+              transition={{ duration: 0.9, delay: i * 0.15, ease: [0.25, 0.1, 0, 1] }}
+              whileHover={{ y: -8 }}
+              className={`relative border bg-card p-12 md:p-16 flex flex-col items-start transition-all duration-700 cursor-pointer group ${product.glowClass}`}
             >
-              {/* Glow dot */}
-              <div className={`w-2 h-2 rounded-full bg-${product.color} animate-glow-pulse mb-8`} />
-
               <h3
-                className={`font-display text-4xl md:text-5xl font-extrabold tracking-[0.2em] uppercase mb-6 text-${product.color} ${product.textGlow}`}
+                className={`font-display text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase mb-10 ${product.colorClass} ${product.textGlow} leading-[0.9]`}
+                style={{ letterSpacing: "0.1em" }}
               >
                 {product.name}
               </h3>
 
-              <div className="space-y-2 text-sm tracking-[0.15em] text-muted-foreground">
-                <p>{product.thc} | {product.cbd}</p>
-                <p className="text-xs tracking-[0.1em]">Terpenes: {product.terpenes}</p>
+              <div className="mt-auto space-y-3">
+                <p className="text-sm tracking-[0.15em] text-foreground/60">{product.dosage}</p>
+                <p className="text-xs tracking-[0.12em] text-foreground/30">{product.terpenes}</p>
               </div>
             </motion.div>
           ))}

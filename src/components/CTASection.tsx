@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 
 const CTASection = () => {
   return (
-    <section className="section-spacing border-t border-border/50">
-      <div className="container mx-auto px-6 text-center">
+    <section className="py-40 md:py-56 lg:py-72">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 text-center">
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="heading-display text-foreground mb-12"
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0, 1] }}
+          className="heading-display text-foreground mb-16"
         >
           Join The
           <br />
@@ -17,21 +17,21 @@ const CTASection = () => {
         </motion.h2>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
             href="#"
-            className="px-8 py-3 bg-foreground text-background text-sm tracking-[0.2em] uppercase hover:bg-accent hover:text-accent-foreground transition-all duration-300"
+            className="px-10 py-4 bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-accent hover:text-accent-foreground transition-all duration-500"
           >
             Find a Retailer
           </a>
           <a
             href="#technology"
-            className="px-8 py-3 border border-muted-foreground/30 text-muted-foreground text-sm tracking-[0.2em] uppercase hover:border-foreground hover:text-foreground transition-all duration-300"
+            className="px-10 py-4 border border-foreground/20 text-foreground/60 text-xs tracking-[0.25em] uppercase hover:border-foreground hover:text-foreground transition-all duration-500"
           >
             Learn More
           </a>

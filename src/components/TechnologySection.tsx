@@ -1,62 +1,59 @@
 import { motion } from "framer-motion";
 
 const points = [
-  {
-    headline: "5–15 Minutes",
-    text: "Fast-acting effects that let you feel it when it matters.",
-  },
-  {
-    headline: "Water-Friendly",
-    text: "Cannabinoids designed for better absorption, faster onset.",
-  },
-  {
-    headline: "Social By Design",
-    text: "A more uplifting, social experience — predictable every time.",
-  },
+  { number: "5–15", unit: "Min", text: "Onset time. Feel it when the moment calls." },
+  { number: "3×", unit: "Absorption", text: "Water-friendly cannabinoids. Better bioavailability." },
+  { number: "100%", unit: "Predictable", text: "Consistent effects. Every single time." },
 ];
 
 const TechnologySection = () => {
   return (
-    <section id="technology" className="section-spacing border-t border-border/50">
-      <div className="container mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="heading-section text-foreground text-center mb-6"
-        >
-          Why Entourage
-          <br />
-          <span className="text-accent">Hits Different</span>
-        </motion.h2>
+    <section id="technology" className="section-spacing">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32 md:mb-44">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.25, 0.1, 0, 1] }}
+          >
+            <p className="label-text mb-8">Technology</p>
+            <h2 className="heading-section text-foreground">
+              Hits
+              <br />
+              <span className="text-accent">Different</span>
+            </h2>
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="text-center text-sm tracking-[0.3em] uppercase text-muted-foreground mb-20"
-        >
-          TiME Infusion® Technology
-        </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0, 1] }}
+            className="flex items-end"
+          >
+            <p className="body-large max-w-md">
+              TiME Infusion® delivers cannabinoids faster than traditional edibles.
+              No waiting. No guessing.
+            </p>
+          </motion.div>
+        </div>
 
-        <div className="max-w-4xl mx-auto space-y-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/30">
           {points.map((point, i) => (
             <motion.div
-              key={point.headline}
-              initial={{ opacity: 0, y: 30 }}
+              key={point.unit}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="text-center"
+              transition={{ duration: 0.8, delay: i * 0.12, ease: [0.25, 0.1, 0, 1] }}
+              className="bg-background p-10 md:p-14"
             >
-              <h3 className="font-display text-3xl md:text-5xl font-bold tracking-wider uppercase text-foreground mb-4">
-                {point.headline}
-              </h3>
-              <p className="body-large max-w-lg mx-auto">
-                {point.text}
-              </p>
+              <span className="font-display text-5xl md:text-7xl font-extrabold text-foreground leading-none">
+                {point.number}
+              </span>
+              <span className="label-text block mt-3 mb-6">{point.unit}</span>
+              <p className="text-sm text-muted-foreground leading-relaxed">{point.text}</p>
             </motion.div>
           ))}
         </div>

@@ -3,75 +3,65 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-end overflow-hidden pb-20 md:pb-28">
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-background/75" />
 
-      <div className="relative z-10 text-center px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="heading-display text-foreground mb-2"
-          style={{ letterSpacing: "0.25em" }}
-        >
-          Entourage
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="heading-sub text-muted-foreground mb-8"
-        >
-          The Social Gummy
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="space-y-3 mb-12"
-        >
-          <p className="text-sm md:text-base tracking-[0.15em] uppercase text-muted-foreground">
-            Fast-Acting Cannabis Gummies
-          </p>
-          <p className="text-sm md:text-base tracking-[0.15em] text-accent">
-            Powered by TiME Infusion®
-          </p>
-          <p className="text-xs md:text-sm tracking-[0.2em] text-muted-foreground/70 mt-4">
-            Feel it in minutes. Share the moment.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <a
-            href="#products"
-            className="px-8 py-3 border border-foreground text-foreground text-sm tracking-[0.2em] uppercase hover:bg-foreground hover:text-background transition-all duration-300"
+      <div className="relative z-10 w-full px-8 md:px-16 lg:px-24">
+        <div className="max-w-[1400px] mx-auto">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="label-text mb-8 md:mb-12"
           >
-            Explore Gummies
-          </a>
-          <a
-            href="#technology"
-            className="px-8 py-3 border border-muted-foreground/30 text-muted-foreground text-sm tracking-[0.2em] uppercase hover:border-foreground hover:text-foreground transition-all duration-300"
+            Fast-Acting Cannabis Gummies — Powered by TiME Infusion®
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.1, 0, 1] }}
+            className="heading-display text-foreground"
           >
-            How It Works
-          </a>
-        </motion.div>
+            Entourage
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.1, 0, 1] }}
+            className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+          >
+            <p className="text-muted-foreground text-sm md:text-base max-w-xs leading-relaxed tracking-wide">
+              Feel it in minutes.<br />Share the moment.
+            </p>
+
+            <div className="flex gap-4">
+              <a
+                href="#products"
+                className="px-8 py-3.5 bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-accent hover:text-accent-foreground transition-all duration-500"
+              >
+                Explore
+              </a>
+              <a
+                href="#technology"
+                className="px-8 py-3.5 border border-foreground/20 text-foreground/60 text-xs tracking-[0.25em] uppercase hover:border-foreground hover:text-foreground transition-all duration-500"
+              >
+                How It Works
+              </a>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };
