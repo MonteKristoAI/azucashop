@@ -10,7 +10,7 @@ const NewsletterCTA = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      toast.success("You're on the list! Welcome to EMBER.");
+      toast.success("You're on the list! Welcome to AZUCA.");
       setEmail("");
     }
   };
@@ -29,7 +29,7 @@ const NewsletterCTA = () => {
           Stay in the Loop
         </h2>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto relative">
-          New roasts, brewing guides, and exclusive offers — delivered to your inbox.
+          New products, cannabis science updates, and partner news — delivered to your inbox.
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto relative">
           <input

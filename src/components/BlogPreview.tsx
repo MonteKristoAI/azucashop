@@ -10,7 +10,7 @@ const BlogPreview = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-12">
         <div>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-2">From the Blog</h2>
-          <p className="text-muted-foreground">Brewing tips, origin stories, and coffee culture.</p>
+          <p className="text-muted-foreground">Science, education, and the future of cannabis edibles.</p>
         </div>
         <Link to="/blog" className="text-primary text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">All Posts <ArrowRight className="w-4 h-4" /></Link>
       </motion.div>
