@@ -6,53 +6,72 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 92%;
+    /* Core palette from brand guide */
+    --background: 207 73% 15%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 92%;
+    --card: 207 73% 12%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 92%;
+    --popover: 207 73% 12%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 92%;
-    --primary-foreground: 0 0% 2%;
+    --primary: 338 100% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 0 0% 92%;
+    --secondary: 207 50% 22%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 207 40% 20%;
+    --muted-foreground: 210 20% 65%;
 
-    --accent: 170 80% 50%;
-    --accent-foreground: 0 0% 2%;
+    --accent: 338 100% 65%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 92%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 10%;
-    --input: 0 0% 10%;
-    --ring: 170 80% 50%;
+    --border: 207 40% 25%;
+    --input: 207 40% 25%;
+    --ring: 338 100% 65%;
 
-    --radius: 0rem;
+    --radius: 0.75rem;
 
-    /* Brand neon colors */
-    --neon-teal: 170 80% 50%;
-    --neon-pink: 330 90% 60%;
-    --neon-gold: 45 100% 55%;
+    /* Brand colors */
+    --azuca-pink: 338 100% 65%;
+    --azuca-navy: 207 73% 15%;
+    --azuca-navy-deep: 207 80% 10%;
+    --azuca-gray: 0 0% 96%;
+    --azuca-white: 0 0% 100%;
+    --azuca-teal: 170 80% 50%;
 
     /* Typography */
     --font-display: 'Syne', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
 
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 0 0% 92%;
-    --sidebar-primary: 0 0% 92%;
-    --sidebar-primary-foreground: 0 0% 2%;
-    --sidebar-accent: 0 0% 8%;
-    --sidebar-accent-foreground: 0 0% 92%;
-    --sidebar-border: 0 0% 10%;
-    --sidebar-ring: 170 80% 50%;
+    --sidebar-background: 207 73% 12%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 338 100% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 207 50% 22%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 207 40% 25%;
+    --sidebar-ring: 338 100% 65%;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 207 73% 15%;
+    --card: 0 0% 96%;
+    --card-foreground: 207 73% 15%;
+    --primary: 338 100% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 207 73% 15%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 207 30% 40%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
   }
 }
 
@@ -78,99 +97,46 @@
   }
 
   ::selection {
-    background: hsl(var(--neon-teal) / 0.3);
+    background: hsl(var(--azuca-pink) / 0.3);
     color: hsl(var(--foreground));
   }
 }
 
 @layer components {
-  .text-glow-teal {
-    text-shadow: 0 0 80px hsl(var(--neon-teal) / 0.35), 0 0 160px hsl(var(--neon-teal) / 0.1);
-  }
-
-  .text-glow-pink {
-    text-shadow: 0 0 80px hsl(var(--neon-pink) / 0.35), 0 0 160px hsl(var(--neon-pink) / 0.1);
-  }
-
-  .text-glow-gold {
-    text-shadow: 0 0 80px hsl(var(--neon-gold) / 0.35), 0 0 160px hsl(var(--neon-gold) / 0.1);
-  }
-
-  .glow-border-teal {
-    box-shadow: 0 0 80px hsl(var(--neon-teal) / 0.08), inset 0 0 80px hsl(var(--neon-teal) / 0.02);
-    border-color: hsl(var(--neon-teal) / 0.15);
-  }
-  .glow-border-teal:hover {
-    box-shadow: 0 0 120px hsl(var(--neon-teal) / 0.18), inset 0 0 100px hsl(var(--neon-teal) / 0.04);
-    border-color: hsl(var(--neon-teal) / 0.35);
-  }
-
-  .glow-border-pink {
-    box-shadow: 0 0 80px hsl(var(--neon-pink) / 0.08), inset 0 0 80px hsl(var(--neon-pink) / 0.02);
-    border-color: hsl(var(--neon-pink) / 0.15);
-  }
-  .glow-border-pink:hover {
-    box-shadow: 0 0 120px hsl(var(--neon-pink) / 0.18), inset 0 0 100px hsl(var(--neon-pink) / 0.04);
-    border-color: hsl(var(--neon-pink) / 0.35);
-  }
-
-  .glow-border-gold {
-    box-shadow: 0 0 80px hsl(var(--neon-gold) / 0.08), inset 0 0 80px hsl(var(--neon-gold) / 0.02);
-    border-color: hsl(var(--neon-gold) / 0.15);
-  }
-  .glow-border-gold:hover {
-    box-shadow: 0 0 120px hsl(var(--neon-gold) / 0.18), inset 0 0 100px hsl(var(--neon-gold) / 0.04);
-    border-color: hsl(var(--neon-gold) / 0.35);
-  }
-
-  /* Radial glow backgrounds for product cards */
-  .glow-bg-teal {
-    background: radial-gradient(ellipse at 50% 0%, hsl(var(--neon-teal) / 0.06) 0%, transparent 70%);
-  }
-  .glow-bg-pink {
-    background: radial-gradient(ellipse at 50% 0%, hsl(var(--neon-pink) / 0.06) 0%, transparent 70%);
-  }
-  .glow-bg-gold {
-    background: radial-gradient(ellipse at 50% 0%, hsl(var(--neon-gold) / 0.06) 0%, transparent 70%);
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
   }
 
   .section-spacing {
-    @apply py-20 md:py-28 lg:py-36;
+    @apply py-16 md:py-24;
   }
 
   .heading-display {
     font-family: var(--font-display);
-    font-size: clamp(3.5rem, 10vw, 9rem);
-    @apply font-extrabold uppercase leading-[0.85];
-    letter-spacing: 0.12em;
+    @apply font-extrabold leading-[0.95] tracking-tight;
   }
 
   .heading-section {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 7vw, 7rem);
-    @apply font-bold uppercase leading-[0.88];
-    letter-spacing: 0.08em;
-  }
-
-  .heading-sub {
-    font-family: var(--font-display);
-    @apply text-xl md:text-2xl lg:text-3xl font-medium uppercase;
-    letter-spacing: 0.35em;
+    @apply font-bold leading-[1.05] tracking-tight;
   }
 
   .body-large {
-    @apply text-base md:text-lg leading-[1.8];
+    @apply text-base md:text-lg leading-relaxed;
     color: hsl(var(--muted-foreground));
-    letter-spacing: 0.03em;
   }
 
-  .label-text {
-    @apply text-[10px] tracking-[0.4em] uppercase;
-    color: hsl(var(--muted-foreground) / 0.7);
+  .gradient-pink {
+    background: linear-gradient(135deg, hsl(var(--azuca-pink)), hsl(338 90% 55%));
   }
 
-  /* Horizontal rule accent */
-  .hr-accent {
-    @apply w-12 h-px bg-muted-foreground/20;
+  .glow-pink {
+    box-shadow: 0 0 40px hsl(var(--azuca-pink) / 0.15), 0 0 80px hsl(var(--azuca-pink) / 0.05);
+  }
+
+  .glass-card {
+    background: hsl(var(--azuca-navy) / 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
   }
 }
