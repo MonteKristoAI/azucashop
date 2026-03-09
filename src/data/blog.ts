@@ -38,6 +38,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-02-15",
     readTime: "4 min",
     author: "Azuca Team",
+    image: "/images/blog-social.jpg",
   },
   {
     id: "edibles-problem-solved",
