@@ -45,19 +45,6 @@ const ProductCard = ({ product, index = 0 }: { product: Product; index?: number 
             </p>
           </Link>
 
-          <div className="flex items-center gap-1 mb-3">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                key={i}
-                className={`w-3.5 h-3.5 ${
-                  i < Math.floor(product.rating)
-                    ? "fill-primary text-primary"
-                    : "text-muted-foreground/30"
-                }`}
-              />
-            ))}
-            <span className="text-xs text-muted-foreground ml-1">({product.reviewCount})</span>
-          </div>
 
           <div className="flex items-center justify-between">
             <span className="font-display font-bold text-lg text-foreground">
