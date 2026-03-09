@@ -5,6 +5,7 @@ import TrustSection from "@/components/TrustSection";
 import AboutSection from "@/components/AboutSection";
 import CustomerReviews from "@/components/CustomerReviews";
 import BlogPreview from "@/components/BlogPreview";
+import FAQSection from "@/components/FAQSection";
 import NewsletterCTA from "@/components/NewsletterCTA";
 
 const Index = () => (
@@ -16,6 +17,7 @@ const Index = () => (
     <AboutSection />
     <CustomerReviews />
     <BlogPreview />
+    <FAQSection />
     <NewsletterCTA />
     <div className="bg-secondary border-t border-border">
       <div className="section-container py-4 text-center">
