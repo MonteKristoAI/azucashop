@@ -27,11 +27,6 @@ const ProductCard = ({ product, index = 0 }: { product: Product; index?: number 
             {product.image && (
               <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             )}
-            {product.badge && (
-              <span className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wider rounded-md z-10">
-                {product.badge}
-              </span>
-            )}
             {!product.image && (
               <span className="font-display text-2xl font-extrabold uppercase tracking-wider text-foreground/10 group-hover:text-foreground/20 transition-colors duration-500 text-center px-4">
                 {product.name}
