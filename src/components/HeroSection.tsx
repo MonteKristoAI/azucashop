@@ -47,7 +47,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 0.3, ease }}
-          className="label-text mb-10 md:mb-14"
+          className="text-[11px] md:text-xs tracking-[0.4em] uppercase text-foreground/50 mb-12 md:mb-16"
         >
           Fast-Acting Cannabis Gummies
         </motion.p>
