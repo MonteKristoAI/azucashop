@@ -10,28 +10,28 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const faqs = [
   {
-    q: "What is TiME INFUSION®?",
-    a: "TiME INFUSION® stands for Thermodynamic individual Molecular Encapsulation. It is a proprietary process that coats individual cannabinoid molecules with a hydrophilic (water-friendly) shell, enabling rapid absorption through soft tissues instead of the digestive system.",
+    q: "How long will these take to work?",
+    a: "Products made with TiME INFUSION® typically deliver first effects within 5–15 minutes, compared to 30–90+ minutes for traditional edibles. Hydrophilic cannabinoids absorb through soft tissues, bypassing the slow digestive pathway.",
   },
   {
-    q: "How is this different from nano-emulsion?",
-    a: "Nano-emulsion uses small globs of oil suspended in liquid. TiME INFUSION® individually encapsulates each cannabinoid molecule at the molecular level, creating truly hydrophilic compounds — not smaller oil droplets. This results in better absorption, taste, and stability.",
+    q: "How strong will the effect be? How long will it last?",
+    a: "TiME INFUSION® delivers precise, easy-to-measure dosing with 18–22% bioavailability (vs 2–6% for traditional edibles). Effects are predictable with a clear onset and offset — ideal for social and sessionable consumption.",
   },
   {
-    q: "How fast do TiME INFUSION® products take effect?",
-    a: "Products made with TiME INFUSION® typically deliver first effects within 5–15 minutes, compared to 30–90+ minutes for traditional edibles. This is because hydrophilic cannabinoids absorb through soft tissues, bypassing the slow digestive pathway.",
+    q: "Why do edibles make me so sleepy?",
+    a: "Traditional edibles convert Delta-9-THC into 11-Hydroxy-THC through liver metabolism, which produces a heavier, more sedative 'couch lock' experience. TiME INFUSION® preserves Delta-9-THC through soft tissue absorption, delivering a lighter, more euphoric sensation similar to smoking.",
   },
   {
-    q: "What is the difference between Delta-9-THC and 11-Hydroxy-THC?",
-    a: "Delta-9-THC is the primary psychoactive compound in cannabis that creates an uplifting, euphoric effect similar to smoking. Traditional edibles convert Delta-9-THC into 11-Hydroxy-THC through liver metabolism, which produces a heavier, more sedative 'couch lock' experience. TiME INFUSION® preserves Delta-9-THC by bypassing liver metabolism.",
+    q: "Why do edibles taste so bad?",
+    a: "Traditional edibles contain cannabinoid oils that add an acrid, bitter 'green' flavor that gets worse with higher potency. TiME INFUSION®'s unique encapsulation process creates a neutral taste profile — no unpleasant flavor from cannabis concentrates or surfactants.",
+  },
+  {
+    q: "How is TiME INFUSION® different from nano-emulsion?",
+    a: "Nano-emulsion uses small globs of oil suspended in liquid. TiME INFUSION® (Thermodynamic individual Molecular Encapsulation®) individually encapsulates each cannabinoid molecule with a hydrophilic coating — not smaller oil droplets. This results in better absorption, taste, and shelf stability.",
   },
   {
     q: "What product formats does TiME INFUSION® support?",
-    a: "TiME INFUSION® powers fast-acting edibles (gummies, chocolates, confections), cannabis beverages, and culinary cannabis ingredients. The technology is shelf-stable, temperature-stable, and pH-stable, making it suitable for a wide range of product formulations.",
-  },
-  {
-    q: "How can brands partner with Azuca?",
-    a: "Azuca provides TiME INFUSION® as a premium ingredient platform for cannabis brands. Partners receive co-branding assets, marketing support, budtender training, and quarterly strategy sessions. Contact our partnerships team to learn more.",
+    a: "TiME INFUSION® powers fast-acting gummies, cannabis beverages, chocolates, and culinary cannabis ingredients. The technology is shelf-stable, temperature-stable, and pH-stable with no seepage or crystallization, making it suitable for a wide range of product formulations.",
   },
 ];
 
