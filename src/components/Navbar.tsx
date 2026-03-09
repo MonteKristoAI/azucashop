@@ -1,120 +1,83 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
-import { ShoppingBag } from "lucide-react";
-import { useCart } from "@/contexts/CartContext";
 
 const navLinks = [
-  { label: "Home", to: "/" },
-  { label: "Technology", to: "/about" },
-  { label: "Products", to: "/shop" },
-  { label: "Blog", to: "/blog" },
-  { label: "Contact", to: "/contact" },
+  { label: "Technology", href: "#technology" },
+  { label: "Science", href: "#science" },
+  { label: "Benefits", href: "#benefits" },
+  { label: "Audience", href: "#audience" },
+  { label: "Partners", href: "#partners" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const { totalItems, setIsOpen: setCartOpen } = useCart();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleClick = (href: string) => {
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/10">
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 h-16 flex items-center justify-between">
-        <Link to="/" className="font-display text-sm font-bold tracking-[0.35em] uppercase text-foreground">
-          Azuca
-        </Link>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-background/80 backdrop-blur-xl border-b border-border/30 py-3"
+          : "bg-transparent py-5"
+      }`}
+    >
+      <div className="section-container flex items-center justify-between">
+        <a href="#" className="font-display font-extrabold text-lg tracking-[0.15em] text-foreground">
+          A Z U C A
+        </a>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 ${
-                location.pathname === link.to
-                  ? "text-foreground"
-                  : "text-foreground/40 hover:text-foreground/70"
-              }`}
+            <button
+              key={link.label}
+              onClick={() => handleClick(link.href)}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               {link.label}
-            </Link>
+            </button>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-5">
-          <button
-            onClick={() => setCartOpen(true)}
-            className="relative text-foreground/60 hover:text-foreground transition-colors"
-          >
-            <ShoppingBag className="w-4.5 h-4.5" />
-            {totalItems > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-neon-pink text-primary-foreground text-[8px] font-bold flex items-center justify-center rounded-full">
-                {totalItems}
-              </span>
-            )}
-          </button>
-          <Link
-            to="/shop"
-            className="px-5 py-2 bg-neon-pink text-primary-foreground text-[10px] tracking-[0.2em] uppercase font-medium hover:shadow-[0_0_20px_hsl(var(--neon-pink)/0.25)] transition-all duration-300"
-          >
-            Shop Now
-          </Link>
-        </div>
-
-        <div className="flex md:hidden items-center gap-4">
-          <button
-            onClick={() => setCartOpen(true)}
-            className="relative text-foreground/60 hover:text-foreground transition-colors"
-          >
-            <ShoppingBag className="w-4 h-4" />
-            {totalItems > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-neon-pink text-primary-foreground text-[8px] font-bold flex items-center justify-center rounded-full">
-                {totalItems}
-              </span>
-            )}
-          </button>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-foreground"
-            aria-label="Toggle menu"
-          >
-            <div className="w-5 flex flex-col gap-1.5">
-              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
-              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""}`} />
-            </div>
-          </button>
-        </div>
+        <button
+          className="md:hidden text-foreground"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
 
       <AnimatePresence>
-        {isOpen && (
+        {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-background border-t border-border/10 overflow-hidden"
+            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border/30 overflow-hidden"
           >
-            <div className="px-8 py-6 flex flex-col gap-5">
+            <div className="section-container py-6 space-y-4">
               {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  onClick={() => setIsOpen(false)}
-                  className={`font-display text-base tracking-[0.15em] uppercase ${
-                    location.pathname === link.to ? "text-foreground" : "text-foreground/40"
-                  }`}
+                <button
+                  key={link.label}
+                  onClick={() => handleClick(link.href)}
+                  className="block w-full text-left text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.label}
-                </Link>
+                </button>
               ))}
-              <Link
-                to="/shop"
-                onClick={() => setIsOpen(false)}
-                className="mt-2 px-6 py-3 bg-neon-pink text-primary-foreground text-xs tracking-[0.2em] uppercase font-medium text-center"
-              >
-                Shop Now
-              </Link>
             </div>
           </motion.div>
         )}
