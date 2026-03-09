@@ -1,138 +1,142 @@
 import { useState, useMemo } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { Search, SlidersHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
 import { products, categories } from "@/data/products";
-import { useCart } from "@/contexts/CartContext";
+import ProductCard from "@/components/ProductCard";
 
-const ease = [0.16, 1, 0.3, 1] as const;
+type SortKey = "featured" | "price-asc" | "price-desc" | "rating";
 
 const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = searchParams.get("category") || "all";
-  const { addToCart } = useCart();
-
-  const filtered = useMemo(() => {
-    return products.filter((p) => {
-      if (activeCategory !== "all" && p.category !== activeCategory) return false;
-      return true;
-    });
-  }, [activeCategory]);
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState<SortKey>("featured");
+  const [maxPrice, setMaxPrice] = useState(100);
 
   const setCategory = (cat: string) => {
-    if (cat === "all") {
-      searchParams.delete("category");
-    } else {
-      searchParams.set("category", cat);
-    }
+    if (cat === "all") searchParams.delete("category");
+    else searchParams.set("category", cat);
     setSearchParams(searchParams);
   };
 
+  const filtered = useMemo(() => {
+    let result = products.filter((p) => {
+      if (activeCategory !== "all" && p.category !== activeCategory) return false;
+      if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false;
+      if (p.price > maxPrice) return false;
+      return true;
+    });
+
+    switch (sort) {
+      case "price-asc": result.sort((a, b) => a.price - b.price); break;
+      case "price-desc": result.sort((a, b) => b.price - a.price); break;
+      case "rating": result.sort((a, b) => b.rating - a.rating); break;
+      default: result.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+    }
+    return result;
+  }, [activeCategory, search, sort, maxPrice]);
+
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <CartDrawer />
-      <div className="pt-28 pb-16 max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
+    <div className="pt-24 pb-16">
+      <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease }}
+          transition={{ duration: 0.6 }}
+          className="mb-10"
         >
-          <h1
-            className="font-display font-extrabold uppercase text-foreground leading-[1.05] mb-4"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", letterSpacing: "0.06em" }}
-          >
-            Products
+          <h1 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-3">
+            Shop
           </h1>
-          <p className="text-sm text-muted-foreground mb-10 max-w-lg">
-            Fast-acting cannabis products powered by TiME INFUSION® technology.
+          <p className="text-muted-foreground max-w-lg">
+            Browse our complete collection of premium coffee, tea, and brewing accessories.
           </p>
         </motion.div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap gap-2 mb-12 border-b border-border/10 pb-6">
-          <button
-            onClick={() => setCategory("all")}
-            className={`px-4 py-1.5 text-[10px] tracking-[0.15em] uppercase border transition-all duration-300 ${
-              activeCategory === "all"
-                ? "border-neon-pink text-neon-pink"
-                : "border-border/30 text-muted-foreground hover:border-border/60"
-            }`}
-          >
-            All
-          </button>
-          {categories.map((cat) => (
+        {/* Filters bar */}
+        <div className="flex flex-col lg:flex-row gap-4 mb-10">
+          {/* Category tabs */}
+          <div className="flex flex-wrap gap-2">
             <button
-              key={cat.id}
-              onClick={() => setCategory(cat.id)}
-              className={`px-4 py-1.5 text-[10px] tracking-[0.15em] uppercase border transition-all duration-300 ${
-                activeCategory === cat.id
-                  ? "border-neon-pink text-neon-pink"
-                  : "border-border/30 text-muted-foreground hover:border-border/60"
+              onClick={() => setCategory("all")}
+              className={`px-4 py-2 text-xs font-medium rounded-lg transition-all ${
+                activeCategory === "all"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:text-foreground"
               }`}
             >
-              {cat.name}
+              All
             </button>
-          ))}
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setCategory(cat.id)}
+                className={`px-4 py-2 text-xs font-medium rounded-lg transition-all ${
+                  activeCategory === cat.id
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {cat.name}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex flex-1 gap-3 lg:justify-end">
+            {/* Search */}
+            <div className="relative flex-1 lg:max-w-xs">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search products..."
+                className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+            </div>
+
+            {/* Price filter */}
+            <div className="flex items-center gap-2">
+              <SlidersHorizontal className="w-4 h-4 text-muted-foreground" />
+              <input
+                type="range"
+                min={10}
+                max={100}
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(Number(e.target.value))}
+                className="w-20 accent-primary"
+              />
+              <span className="text-xs text-muted-foreground w-10">${maxPrice}</span>
+            </div>
+
+            {/* Sort */}
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as SortKey)}
+              className="px-3 py-2 text-xs rounded-lg bg-secondary border border-border text-foreground focus:outline-none"
+            >
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
         </div>
 
         {/* Product grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((product, i) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.05, ease }}
-            >
-              <div className="group block border border-border/30 bg-card/40 hover:border-border/50 transition-all duration-500">
-                <Link to={`/product/${product.id}`}>
-                  <div className="relative aspect-square bg-secondary/50 flex items-center justify-center">
-                    {product.badge && (
-                      <span className="absolute top-3 left-3 px-3 py-1 bg-neon-pink text-primary-foreground text-[9px] tracking-[0.15em] uppercase font-medium z-10">
-                        {product.badge}
-                      </span>
-                    )}
-                    <span className="font-display text-sm font-bold uppercase tracking-[0.2em] text-foreground/15 group-hover:text-foreground/25 transition-colors duration-500">
-                      {product.name.split(" ").slice(0, 2).join(" ")}
-                    </span>
-                  </div>
-                </Link>
-                <div className="p-5">
-                  <Link to={`/product/${product.id}`}>
-                    <h3 className="font-display font-bold text-foreground text-sm tracking-[0.05em] mb-1.5">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-                      {product.shortDescription}
-                    </p>
-                  </Link>
-                  <div className="flex items-center justify-between">
-                    <span className="font-display font-bold text-foreground text-base">
-                      ${product.price.toFixed(2)}
-                    </span>
-                    <button
-                      onClick={() => addToCart(product)}
-                      className="text-[10px] tracking-[0.15em] uppercase text-neon-teal hover:text-foreground transition-colors duration-300"
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <ProductCard key={product.id} product={product} index={i} />
           ))}
         </div>
 
         {filtered.length === 0 && (
-          <p className="text-center text-muted-foreground py-20">
-            No products match your filters.
-          </p>
+          <div className="text-center py-20">
+            <p className="text-muted-foreground">No products match your filters.</p>
+          </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

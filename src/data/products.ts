@@ -1,172 +1,195 @@
 export interface Product {
   id: string;
   name: string;
-  category: string;
   price: number;
+  category: "coffee" | "tea" | "accessories";
   description: string;
   shortDescription: string;
-  effects: string[];
-  dosage: string;
-  ingredients: string;
-  labTested: boolean;
-  image: string;
+  rating: number;
+  reviewCount: number;
   badge?: string;
+  variants?: string[];
   featured?: boolean;
 }
 
+export const categories = [
+  { id: "coffee", name: "Coffee", description: "Single-origin & artisan blends roasted to perfection" },
+  { id: "tea", name: "Tea", description: "Ceremonial grade & hand-picked loose leaf teas" },
+  { id: "accessories", name: "Accessories", description: "Premium brew gear for the perfect cup" },
+] as const;
+
 export const products: Product[] = [
   {
-    id: "time-gummy-social",
-    name: "TiME Social Gummy",
-    category: "edibles",
-    price: 34.99,
-    description:
-      "Engineered with TiME INFUSION® for a fast-acting, socially calibrated experience. Feel effects in 5–15 minutes with uplifting Delta-9 THC delivered through molecular encapsulation. Designed for gatherings, events, and moments that matter.",
-    shortDescription: "Fast-acting Delta-9 gummy for social moments",
-    effects: ["social", "euphoria", "fast-onset"],
-    dosage: "5mg Delta-9 THC per piece",
-    ingredients:
-      "TiME INFUSION® encapsulated Delta-9 THC, natural flavors, pectin, citric acid, organic cane sugar",
-    labTested: true,
-    image: "/placeholder.svg",
-    badge: "Best Seller",
-    featured: true,
-  },
-  {
-    id: "time-gummy-unwind",
-    name: "TiME Unwind Gummy",
-    category: "edibles",
-    price: 36.99,
-    description:
-      "A calming fast-acting edible powered by TiME INFUSION® technology. Hydrophilic cannabinoids absorb through soft tissue for rapid onset without the heavy 11-Hydroxy-THC effects of traditional edibles. Perfect for unwinding with predictable timing.",
-    shortDescription: "Calm, predictable relaxation in minutes",
-    effects: ["calm", "relaxation", "fast-onset"],
-    dosage: "10mg Delta-9 THC per piece",
-    ingredients:
-      "TiME INFUSION® encapsulated Delta-9 THC, CBN, natural flavors, pectin, organic cane sugar",
-    labTested: true,
-    image: "/placeholder.svg",
-    featured: true,
-  },
-  {
-    id: "time-gummy-elevate",
-    name: "TiME Elevate Gummy",
-    category: "edibles",
-    price: 39.99,
-    description:
-      "Higher-potency fast-acting edible delivering euphoric Delta-9 THC effects similar to smoking — without combustion. TiME INFUSION® ensures rapid sublingual absorption with no bitter distillate taste.",
-    shortDescription: "Higher potency euphoric experience",
-    effects: ["euphoria", "energy", "fast-onset"],
-    dosage: "25mg Delta-9 THC per piece",
-    ingredients:
-      "TiME INFUSION® encapsulated Delta-9 THC, natural flavors, pectin, citric acid, organic cane sugar",
-    labTested: true,
-    image: "/placeholder.svg",
-    badge: "High Potency",
-    featured: true,
-  },
-  {
-    id: "time-infused-seltzer",
-    name: "TiME Infused Seltzer",
-    category: "beverages",
-    price: 7.99,
-    description:
-      "A sessionable cannabis beverage powered by water-soluble TiME INFUSION® cannabinoids. Designed for social consumption with predictable onset and offset — the cannabis equivalent of a craft cocktail.",
-    shortDescription: "Sessionable cannabis seltzer, 5-minute onset",
-    effects: ["social", "light", "fast-onset"],
-    dosage: "5mg Delta-9 THC per can",
-    ingredients:
-      "Carbonated water, TiME INFUSION® encapsulated Delta-9 THC, natural flavors, citric acid",
-    labTested: true,
-    image: "/placeholder.svg",
-    badge: "New",
-  },
-  {
-    id: "time-beverage-mixer",
-    name: "TiME Beverage Mixer",
-    category: "beverages",
+    id: "ethiopian-yirgacheffe",
+    name: "Ethiopian Yirgacheffe",
     price: 24.99,
-    description:
-      "Professional-grade water-soluble cannabinoid mixer for creating infused beverages. TiME INFUSION® technology ensures complete miscibility with no separation, no bitter taste, and precise dosing per serving.",
-    shortDescription: "Water-soluble mixer for infused cocktails",
-    effects: ["social", "versatile"],
-    dosage: "5mg Delta-9 THC per serving (20 servings)",
-    ingredients:
-      "Purified water, TiME INFUSION® encapsulated Delta-9 THC, natural emulsifiers",
-    labTested: true,
-    image: "/placeholder.svg",
+    category: "coffee",
+    description: "Bright and complex with notes of blueberry, lemon, and dark chocolate. Grown at high altitude in the Yirgacheffe region, this single-origin bean delivers an extraordinary cup with a clean, wine-like finish.",
+    shortDescription: "Bright, fruity single-origin with blueberry notes",
+    rating: 4.8,
+    reviewCount: 124,
+    badge: "Best Seller",
+    variants: ["250g", "500g", "1kg"],
+    featured: true,
   },
   {
-    id: "time-culinary-drops",
-    name: "TiME Culinary Drops",
-    category: "culinary",
-    price: 44.99,
-    description:
-      "Shelf-stable, hydrophilic cannabinoid drops designed for chefs and culinary professionals. TiME INFUSION® molecular encapsulation ensures even distribution in any recipe with consistent dosing and no cannabis taste.",
-    shortDescription: "Precision cannabinoid drops for chefs",
-    effects: ["versatile", "precision"],
-    dosage: "10mg Delta-9 THC per dropper",
-    ingredients:
-      "TiME INFUSION® encapsulated Delta-9 THC, MCT oil, natural emulsifiers",
-    labTested: true,
-    image: "/placeholder.svg",
-  },
-];
-
-export const categories = [
-  {
-    id: "edibles",
-    name: "Fast-Acting Edibles",
-    description:
-      "Powered by TiME INFUSION® for 5–15 minute onset with uplifting Delta-9 THC effects.",
-    image: "/placeholder.svg",
+    id: "colombian-supremo",
+    name: "Colombian Supremo",
+    price: 22.99,
+    category: "coffee",
+    description: "Rich and full-bodied with a smooth caramel sweetness and nutty undertones. Sourced from the high-altitude farms of Huila, Colombia, this classic bean delivers consistent quality in every brew.",
+    shortDescription: "Smooth, caramel-sweet Colombian classic",
+    rating: 4.6,
+    reviewCount: 98,
+    variants: ["250g", "500g", "1kg"],
   },
   {
-    id: "beverages",
-    name: "Cannabis Beverages",
-    description:
-      "Water-soluble cannabinoids for sessionable social consumption with predictable timing.",
-    image: "/placeholder.svg",
+    id: "sumatra-dark-roast",
+    name: "Sumatra Dark Roast",
+    price: 23.99,
+    category: "coffee",
+    description: "Deep, earthy, and bold with hints of cedar and dark cocoa. This Indonesian dark roast has a syrupy body and low acidity, perfect for those who love an intense coffee experience.",
+    shortDescription: "Bold, earthy dark roast with low acidity",
+    rating: 4.7,
+    reviewCount: 87,
+    variants: ["250g", "500g", "1kg"],
   },
   {
-    id: "culinary",
-    name: "Culinary Cannabis",
-    description:
-      "Premium hydrophilic ingredients for chefs — shelf-stable, great-tasting, precisely dosed.",
-    image: "/placeholder.svg",
-  },
-];
-
-export const blogPosts = [
-  {
-    id: "fast-acting-vs-traditional",
-    title: "Fast-Acting vs Traditional Edibles: The Science",
-    excerpt:
-      "Why TiME INFUSION® delivers effects in minutes while traditional edibles take over an hour — and why Delta-9 THC matters.",
-    image: "/placeholder.svg",
-    date: "Mar 5, 2026",
-    readTime: "5 min read",
-    category: "Science",
+    id: "house-espresso-blend",
+    name: "House Espresso Blend",
+    price: 25.99,
+    category: "coffee",
+    description: "Our signature espresso blend combining Brazilian, Ethiopian, and Guatemalan beans for a balanced shot with notes of toasted hazelnut, dark chocolate, and a lingering caramel finish.",
+    shortDescription: "Signature blend with hazelnut & chocolate",
+    rating: 4.9,
+    reviewCount: 201,
+    badge: "Staff Pick",
+    variants: ["250g", "500g", "1kg"],
+    featured: true,
   },
   {
-    id: "social-consumption-future",
-    title: "The Future of Social Cannabis Consumption",
-    excerpt:
-      "How predictable-onset edibles and beverages are transforming cannabis lounges, events, and social gatherings.",
-    image: "/placeholder.svg",
-    date: "Feb 28, 2026",
-    readTime: "4 min read",
-    category: "Industry",
+    id: "cold-brew-concentrate",
+    name: "Cold Brew Concentrate",
+    price: 18.99,
+    category: "coffee",
+    description: "Smooth, naturally sweet cold brew concentrate brewed for 18 hours. Dilute with water or milk for the perfect iced coffee. Low acidity, high caffeine, incredible flavor.",
+    shortDescription: "18-hour brewed smooth cold brew",
+    rating: 4.5,
+    reviewCount: 76,
+    variants: ["500ml", "1L"],
   },
   {
-    id: "understanding-bioavailability",
-    title: "Understanding Cannabinoid Bioavailability",
-    excerpt:
-      "What 18–22% bioavailability means and how molecular encapsulation improves cannabinoid absorption.",
-    image: "/placeholder.svg",
-    date: "Feb 20, 2026",
-    readTime: "6 min read",
-    category: "Education",
+    id: "ceremonial-matcha",
+    name: "Ceremonial Matcha",
+    price: 34.99,
+    category: "tea",
+    description: "First-harvest stone-ground matcha from Uji, Kyoto. Vibrant emerald green with a naturally sweet, umami-rich flavor and creamy body. Perfect for traditional preparation or modern lattes.",
+    shortDescription: "First-harvest Uji matcha, umami-rich",
+    rating: 4.9,
+    reviewCount: 156,
+    badge: "Premium",
+    variants: ["30g", "80g"],
+    featured: true,
+  },
+  {
+    id: "earl-grey-supreme",
+    name: "Earl Grey Supreme",
+    price: 16.99,
+    category: "tea",
+    description: "A refined blend of premium Ceylon black tea scented with natural bergamot oil and studded with blue cornflower petals. Bright, citrusy, and aromatic with a smooth finish.",
+    shortDescription: "Bergamot-scented Ceylon with cornflower",
+    rating: 4.6,
+    reviewCount: 89,
+    variants: ["50g", "100g"],
+  },
+  {
+    id: "jasmine-dragon-pearl",
+    name: "Jasmine Dragon Pearl",
+    price: 28.99,
+    category: "tea",
+    description: "Hand-rolled green tea pearls infused with fresh jasmine blossoms over seven nights. Each pearl unfurls in hot water to release a delicate, perfumed liquor with a silky texture.",
+    shortDescription: "Hand-rolled pearls, seven-night jasmine infusion",
+    rating: 4.8,
+    reviewCount: 67,
+    variants: ["50g", "100g"],
+  },
+  {
+    id: "chai-masala",
+    name: "Chai Masala Blend",
+    price: 14.99,
+    category: "tea",
+    description: "Robust Assam black tea blended with whole cardamom, cinnamon, ginger, cloves, and black pepper. Bold and warming, designed for brewing with milk and sweetener.",
+    shortDescription: "Warming spiced blend with Assam black tea",
+    rating: 4.5,
+    reviewCount: 112,
+    variants: ["75g", "150g"],
+  },
+  {
+    id: "oolong-reserve",
+    name: "Oolong Reserve",
+    price: 32.99,
+    category: "tea",
+    description: "Partially oxidized Taiwanese high-mountain oolong with floral, buttery notes and a lingering orchid sweetness. Grown above 1,500 meters for exceptional complexity.",
+    shortDescription: "High-mountain Taiwanese oolong, floral & buttery",
+    rating: 4.7,
+    reviewCount: 43,
+    badge: "Limited",
+    variants: ["50g", "100g"],
+  },
+  {
+    id: "ceramic-pour-over",
+    name: "Ceramic Pour-Over Set",
+    price: 45.99,
+    category: "accessories",
+    description: "Handcrafted ceramic pour-over dripper with matching server and reusable stainless steel filter. Produces a clean, nuanced cup that highlights single-origin characteristics.",
+    shortDescription: "Handcrafted dripper with stainless steel filter",
+    rating: 4.8,
+    reviewCount: 64,
+    featured: true,
+  },
+  {
+    id: "hand-grinder-pro",
+    name: "Hand Grinder Pro",
+    price: 68.99,
+    category: "accessories",
+    description: "Precision conical burr hand grinder with 15 click settings for espresso to French press. Stainless steel burrs, ergonomic walnut handle, and compact travel-friendly design.",
+    shortDescription: "Conical burr grinder with 15 settings",
+    rating: 4.7,
+    reviewCount: 91,
+    badge: "Top Rated",
+  },
+  {
+    id: "double-wall-glasses",
+    name: "Double-Wall Glass Set",
+    price: 29.99,
+    category: "accessories",
+    description: "Set of two borosilicate double-wall glasses (350ml). Keeps drinks hot longer while remaining cool to the touch. Perfect for lattes, cortados, or iced beverages.",
+    shortDescription: "Insulated borosilicate glass pair, 350ml",
+    rating: 4.6,
+    reviewCount: 58,
+    variants: ["Set of 2", "Set of 4"],
+  },
+  {
+    id: "bamboo-tea-set",
+    name: "Bamboo Tea Set",
+    price: 52.99,
+    category: "accessories",
+    description: "Traditional gongfu-style tea set featuring a Yixing clay teapot, four cups, bamboo tea tray, and stainless steel accessories. Everything you need for a meditative tea ceremony.",
+    shortDescription: "Complete gongfu ceremony set with Yixing clay",
+    rating: 4.9,
+    reviewCount: 37,
+    badge: "Artisan",
+  },
+  {
+    id: "travel-tumbler",
+    name: "Insulated Travel Tumbler",
+    price: 34.99,
+    category: "accessories",
+    description: "Vacuum-insulated stainless steel tumbler (480ml) with leak-proof lid. Keeps coffee hot for 8 hours or iced drinks cold for 12. Matte black finish with copper accent ring.",
+    shortDescription: "Keeps hot 8hr / cold 12hr, 480ml",
+    rating: 4.5,
+    reviewCount: 83,
+    variants: ["Matte Black", "Forest Green", "Warm Sand"],
   },
 ];
 
@@ -174,25 +197,37 @@ export const reviews = [
   {
     name: "Sarah M.",
     rating: 5,
-    text: "Felt it in under 10 minutes. Perfect for going out with friends without waiting an hour.",
-    product: "TiME Social Gummy",
+    text: "The Ethiopian Yirgacheffe is incredible — bright, complex, and unlike anything from a grocery store. I'm hooked.",
+    product: "Ethiopian Yirgacheffe",
   },
   {
     name: "Marcus T.",
     rating: 5,
-    text: "Finally, a consistent product. Every piece delivers the same experience. No more guessing.",
-    product: "TiME Unwind Gummy",
+    text: "Best matcha I've found online. The color is vivid green and the taste is smooth with zero bitterness.",
+    product: "Ceremonial Matcha",
   },
   {
     name: "Jenna K.",
     rating: 5,
-    text: "The seltzer is a game changer for parties. Feels like having a cocktail but better.",
-    product: "TiME Infused Seltzer",
+    text: "The pour-over set is beautiful and functional. My morning coffee ritual has been completely elevated.",
+    product: "Ceramic Pour-Over Set",
   },
   {
     name: "David R.",
     rating: 4,
-    text: "No bitter aftertaste at all. These taste incredible compared to every other edible I've tried.",
-    product: "TiME Elevate Gummy",
+    text: "House Espresso Blend pulls perfect shots every time. Rich crema and that chocolate finish is addictive.",
+    product: "House Espresso Blend",
+  },
+  {
+    name: "Lisa W.",
+    rating: 5,
+    text: "Ordered the hand grinder for travel — the build quality is exceptional and the grind consistency is remarkable.",
+    product: "Hand Grinder Pro",
+  },
+  {
+    name: "Tom H.",
+    rating: 5,
+    text: "Jasmine Dragon Pearls are a showstopper. Watching them unfurl while the aroma fills the room — pure magic.",
+    product: "Jasmine Dragon Pearl",
   },
 ];
