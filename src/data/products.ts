@@ -108,6 +108,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 89,
     variants: ["5mg × 1", "5mg × 4-pack"],
+    image: "/images/berry-hibiscus-tonic.jpg",
   },
   {
     id: "grapefruit-sparkling",
