@@ -27,7 +27,7 @@ const ShopByCategory = () => {
             className="font-display font-extrabold uppercase text-foreground leading-[1.05]"
             style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", letterSpacing: "0.06em" }}
           >
-            Shop by Category
+            Powered by TiME INFUSION®
           </h2>
         </motion.div>
 
