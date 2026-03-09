@@ -11,36 +11,42 @@ const SocialSection = () => {
     offset: ["start end", "end start"],
   });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const imgY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section id="experience" className="py-16 md:py-24 lg:py-28 overflow-hidden" ref={ref}>
+    <section id="experience" className="py-14 md:py-20 lg:py-24 overflow-hidden" ref={ref}>
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-10 items-center">
+          {/* Text column */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease }}
+            className="flex flex-col justify-center"
           >
             <div className="hr-accent mb-6" />
-            <p className="label-text mb-10">Experience</p>
-            <h2 className="heading-section text-foreground mb-8" style={{ letterSpacing: "0.06em" }}>
+            <p className="label-text mb-8">Experience</p>
+            <h2
+              className="font-display font-extrabold uppercase text-foreground leading-[1.05] mb-6"
+              style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)", letterSpacing: "0.08em" }}
+            >
               Made For
               <br />
               <span className="text-neon-pink">The Moment</span>
             </h2>
-            <p className="text-base md:text-lg text-foreground/50 leading-[1.8] max-w-sm">
+            <p className="text-base md:text-lg lg:text-xl text-foreground/55 leading-[1.75] max-w-md">
               Designed for shared moments — nights&nbsp;out, celebrations, and&nbsp;experiences where timing matters.
             </p>
           </motion.div>
 
+          {/* Image column — larger proportion */}
           <motion.div
             style={{ y: imgY }}
-            className="relative aspect-[4/5] overflow-hidden rounded-sm"
+            className="relative aspect-[3/4] lg:aspect-[4/5] overflow-hidden lg:-mr-8"
           >
             <motion.img
-              initial={{ scale: 1.08 }}
+              initial={{ scale: 1.06 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.8, ease }}
@@ -50,8 +56,8 @@ const SocialSection = () => {
               loading="lazy"
             />
             {/* Cinematic gradient overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/15" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/15 to-transparent" />
           </motion.div>
         </div>
       </div>
