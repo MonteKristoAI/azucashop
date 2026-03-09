@@ -18,7 +18,7 @@ const HeroSection = () => {
         }}
       />
       {/* Overlay — slightly less opaque to let the image breathe */}
-      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-background/60" />
       {/* Vignette */}
       <div
         className="absolute inset-0"
