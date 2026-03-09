@@ -27,11 +27,6 @@ const ProductCard = ({ product, index = 0 }: { product: Product; index?: number 
             {product.image && (
               <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             )}
-            {product.badge && (
-              <span className="absolute top-3 left-3 px-2.5 py-1 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wider rounded-md z-10">
-                {product.badge}
-              </span>
-            )}
             {!product.image && (
               <span className="font-display text-2xl font-extrabold uppercase tracking-wider text-foreground/10 group-hover:text-foreground/20 transition-colors duration-500 text-center px-4">
                 {product.name}
@@ -50,19 +45,6 @@ const ProductCard = ({ product, index = 0 }: { product: Product; index?: number 
             </p>
           </Link>
 
-          <div className="flex items-center gap-1 mb-3">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                key={i}
-                className={`w-3.5 h-3.5 ${
-                  i < Math.floor(product.rating)
-                    ? "fill-primary text-primary"
-                    : "text-muted-foreground/30"
-                }`}
-              />
-            ))}
-            <span className="text-xs text-muted-foreground ml-1">({product.reviewCount})</span>
-          </div>
 
           <div className="flex items-center justify-between">
             <span className="font-display font-bold text-lg text-foreground">
