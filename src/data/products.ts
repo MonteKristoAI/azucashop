@@ -172,6 +172,7 @@ export const products: Product[] = [
     reviewCount: 87,
     badge: "Limited",
     variants: ["5mg × 8pc"],
+    image: "/images/white-chocolate-raspberry.jpg",
   },
   {
     id: "hazelnut-praline-truffle",
