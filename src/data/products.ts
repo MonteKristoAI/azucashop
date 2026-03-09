@@ -184,6 +184,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviewCount: 64,
     variants: ["5mg × 6pc", "10mg × 6pc"],
+    image: "/images/hazelnut-praline-truffles.jpg",
   },
   {
     id: "mint-dark-chocolate",
