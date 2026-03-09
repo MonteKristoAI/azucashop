@@ -27,7 +27,7 @@ const ShopByCategory = () => {
             className="font-display font-extrabold uppercase text-foreground leading-[1.05]"
             style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", letterSpacing: "0.06em" }}
           >
-            Shop by Category
+            Powered by TiME INFUSION®
           </h2>
         </motion.div>
 
@@ -69,7 +69,7 @@ const ShopByCategory = () => {
                     {cat.description}
                   </p>
                   <span className={`inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase ${color.text} group-hover:gap-3 transition-all duration-300`}>
-                    Shop Now <ArrowRight className="w-3.5 h-3.5" />
+                    Explore <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </Link>
               </motion.div>

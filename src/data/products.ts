@@ -99,25 +99,25 @@ export const products: Product[] = [
 
 export const categories = [
   {
-    id: "gummies",
-    name: "Gummies",
-    description: "Fast-acting, precisely dosed hemp gummies for every mood.",
+    id: "fast-acting-edibles",
+    name: "Fast-Acting Edibles",
+    description: "Powered by TiME INFUSION® for 5–15 minute onset with uplifting Delta-9-THC effects — no couch lock.",
     image: "/placeholder.svg",
     count: products.filter((p) => p.category === "gummies").length,
   },
   {
-    id: "tinctures",
-    name: "Tinctures & Oils",
-    description: "Full-spectrum hemp extracts for sublingual or topical use.",
+    id: "infused-beverages",
+    name: "Cannabis Beverages",
+    description: "Water-soluble cannabinoids for sessionable social consumption with predictable onset and offset.",
     image: "/placeholder.svg",
-    count: products.filter((p) => p.category === "tinctures").length,
+    count: 0,
   },
   {
-    id: "pet",
-    name: "Pet CBD",
-    description: "Vet-formulated wellness drops for your furry companions.",
+    id: "culinary-ingredients",
+    name: "Culinary Cannabis",
+    description: "Premium hydrophilic ingredients for chefs and brands — shelf-stable, great-tasting, and precisely dosed.",
     image: "/placeholder.svg",
-    count: products.filter((p) => p.category === "pet").length,
+    count: 0,
   },
 ];
 
