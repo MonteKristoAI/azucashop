@@ -6,7 +6,7 @@ const statements = ["Fast-Acting", "Predictable", "Social", "Elevated"];
 
 const DetailsSection = () => {
   return (
-    <section className="py-28 md:py-40 overflow-hidden">
+    <section className="py-16 md:py-24 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
         {statements.map((statement, i) => (
           <motion.div

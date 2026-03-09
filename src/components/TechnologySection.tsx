@@ -10,7 +10,7 @@ const stats = [
 
 const TechnologySection = () => {
   return (
-    <section id="technology" className="py-28 md:py-36 lg:py-44">
+    <section id="technology" className="py-16 md:py-24 lg:py-28">
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
         {/* Header */}
         <motion.div

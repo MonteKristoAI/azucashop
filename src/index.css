@@ -135,7 +135,7 @@
   }
 
   .section-spacing {
-    @apply py-36 md:py-48 lg:py-60;
+    @apply py-20 md:py-28 lg:py-36;
   }
 
   .heading-display {
