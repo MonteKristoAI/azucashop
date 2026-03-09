@@ -36,31 +36,30 @@ const TechnologySection = () => {
         </motion.div>
 
         {/* Spacer */}
-        <div className="h-28 md:h-40 lg:h-52" />
+        <div className="h-20 md:h-28" />
 
-        {/* Stats rows */}
-        <div>
+        {/* Stats — vertical stacked blocks in 3-col grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 max-w-4xl mx-auto text-center">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.unit}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: i * 0.08, ease }}
-              className="border-t border-border/15 py-12 md:py-16 lg:py-20 grid grid-cols-[1fr] md:grid-cols-[180px_160px_1fr] gap-3 md:gap-10 items-baseline"
+              transition={{ duration: 0.9, delay: i * 0.1, ease }}
+              className="flex flex-col items-center gap-3"
             >
-              <span className="font-display text-2xl md:text-3xl lg:text-4xl font-extrabold text-foreground leading-none tracking-wide uppercase">
+              <span className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-none">
                 {stat.number}
               </span>
-              <span className="text-[10px] tracking-[0.4em] uppercase text-foreground/25">
+              <span className="text-[10px] tracking-[0.4em] uppercase text-foreground/40 mt-1">
                 {stat.unit}
               </span>
-              <p className="text-sm text-muted-foreground leading-relaxed md:text-right">
+              <p className="text-xs md:text-sm text-muted-foreground/70 leading-relaxed mt-1 max-w-[200px]">
                 {stat.text}
               </p>
             </motion.div>
           ))}
-          <div className="border-t border-border/15" />
         </div>
       </div>
     </section>
