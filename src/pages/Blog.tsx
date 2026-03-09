@@ -1,73 +1,49 @@
+import { useState } from "react";
+import { Clock, User } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { blogPosts } from "@/data/products";
+import { blogPosts } from "@/data/blog";
 
-const ease = [0.16, 1, 0.3, 1] as const;
+const allCategories = Array.from(new Set(blogPosts.map((p) => p.category)));
 
 const Blog = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className="pt-28 pb-16 max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease }}
-          className="mb-12"
-        >
-          <h1
-            className="font-display font-extrabold uppercase text-foreground leading-[1.05] mb-4"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", letterSpacing: "0.06em" }}
-          >
-            Blog
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Education, transparency, and wellness insights.
-          </p>
-        </motion.div>
+  const [activeCategory, setActiveCategory] = useState("all");
+  const filtered = activeCategory === "all" ? blogPosts : blogPosts.filter((p) => p.category === activeCategory);
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {blogPosts.map((post, i) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease }}
-            >
-              <Link
-                to={`/blog/${post.id}`}
-                className="group block border border-border/20 bg-card/40 hover:border-border/40 transition-all duration-500"
-              >
-                <div className="aspect-[16/10] bg-secondary/50 flex items-center justify-center">
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-foreground/15">
-                    {post.category}
-                  </span>
+  return (
+    <div className="pt-24 pb-16">
+      <div className="section-container">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-10">
+          <h1 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-3">Blog</h1>
+          <p className="text-muted-foreground max-w-lg">Brewing guides, origin stories, and the culture behind every cup.</p>
+        </motion.div>
+        <div className="flex flex-wrap gap-2 mb-10">
+          <button onClick={() => setActiveCategory("all")} className={`px-4 py-2 text-xs font-medium rounded-lg transition-all ${activeCategory === "all" ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}>All</button>
+          {allCategories.map((cat) => (
+            <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-4 py-2 text-xs font-medium rounded-lg transition-all ${activeCategory === cat ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}>{cat}</button>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((post, i) => (
+            <motion.article key={post.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }}>
+              <div className="rounded-xl border border-border bg-card overflow-hidden hover-lift group cursor-pointer">
+                <div className="aspect-[16/9] bg-gradient-to-br from-primary/10 to-secondary flex items-center justify-center">
+                  <span className="text-xs font-display font-bold text-muted-foreground/30 uppercase tracking-widest">{post.category}</span>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[10px] tracking-[0.1em] uppercase text-neon-teal">{post.category}</span>
-                    <span className="text-[10px] text-muted-foreground">{post.date}</span>
-                    <span className="text-[10px] text-muted-foreground">{post.readTime}</span>
+                  <div className="flex items-center gap-4 mb-3 text-[11px] text-muted-foreground">
+                    <span className="text-primary font-medium uppercase tracking-wider">{post.category}</span>
+                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
+                    <span className="flex items-center gap-1"><User className="w-3 h-3" />{post.author}</span>
                   </div>
-                  <h2 className="font-display font-bold text-foreground text-base leading-snug mb-3 group-hover:text-neon-pink transition-colors duration-300">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                    {post.excerpt}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 text-[10px] tracking-[0.15em] uppercase text-foreground/40 group-hover:text-neon-pink transition-all duration-300">
-                    Read More <ArrowRight className="w-3 h-3" />
-                  </span>
+                  <h2 className="font-display font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">{post.title}</h2>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{post.excerpt}</p>
+                  <p className="text-xs text-muted-foreground mt-4">{post.date}</p>
                 </div>
-              </Link>
-            </motion.div>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

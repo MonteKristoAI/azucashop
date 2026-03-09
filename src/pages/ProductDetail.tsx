@@ -1,169 +1,92 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { ArrowLeft, Star, ShoppingBag, Minus, Plus } from "lucide-react";
 import { motion } from "framer-motion";
-import { Shield, FlaskConical, ArrowLeft, Zap, Clock, Droplets } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
 import { products } from "@/data/products";
-import { useCart } from "@/contexts/CartContext";
+import { useCartStore } from "@/store/cartStore";
+import ProductCard from "@/components/ProductCard";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
-const ease = [0.16, 1, 0.3, 1] as const;
+const categoryColors: Record<string, string> = {
+  coffee: "from-amber-900/20 to-orange-900/5",
+  tea: "from-emerald-900/20 to-teal-900/5",
+  accessories: "from-slate-700/20 to-indigo-900/5",
+};
 
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
-  const { addToCart } = useCart();
-
-  const related = products.filter((p) => p.id !== id).slice(0, 3);
+  const addItem = useCartStore((s) => s.addItem);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedVariant, setSelectedVariant] = useState<string | undefined>(product?.variants?.[0]);
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-background">
-        <Navbar />
-        <div className="pt-32 text-center">
-          <h1 className="font-display text-2xl text-foreground mb-4">Product Not Found</h1>
-          <Link to="/shop" className="text-neon-pink text-sm">← Back to Products</Link>
-        </div>
-        <Footer />
+      <div className="pt-24 section-container text-center py-32">
+        <p className="text-muted-foreground mb-4">Product not found.</p>
+        <Button variant="outline" asChild><Link to="/shop">Back to Shop</Link></Button>
       </div>
     );
   }
 
+  const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 3);
+
+  const handleAddToCart = () => {
+    addItem(product, quantity, selectedVariant);
+    toast.success(`${product.name} added to cart`);
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <CartDrawer />
-      <div className="pt-24 pb-16 max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
-        <Link
-          to="/shop"
-          className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors mb-10"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" /> Back to Products
+    <div className="pt-24 pb-16">
+      <div className="section-container">
+        <Link to="/shop" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+          <ArrowLeft className="w-4 h-4" /> Back to Shop
         </Link>
-
-        {/* Hero */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, ease }}
-            className="aspect-square bg-secondary/50 flex items-center justify-center border border-border/20"
-          >
-            <span className="font-display text-2xl font-bold uppercase tracking-[0.2em] text-foreground/10">
-              {product.name.split(" ").slice(0, 2).join(" ")}
-            </span>
+        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className={`aspect-square rounded-2xl bg-gradient-to-br ${categoryColors[product.category]} border border-border flex items-center justify-center`}>
+            <span className="font-display text-4xl font-extrabold uppercase tracking-wider text-foreground/10 text-center px-8">{product.name}</span>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease }}
-          >
-            {product.badge && (
-              <span className="inline-block px-3 py-1 bg-neon-pink text-primary-foreground text-[9px] tracking-[0.15em] uppercase font-medium mb-4">
-                {product.badge}
-              </span>
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex flex-col justify-center">
+            {product.badge && <span className="inline-block w-fit px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-md mb-4">{product.badge}</span>}
+            <h1 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-2">{product.name}</h1>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (<Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? "fill-primary text-primary" : "text-muted-foreground/20"}`} />))}
+              </div>
+              <span className="text-sm text-muted-foreground">{product.rating} ({product.reviewCount} reviews)</span>
+            </div>
+            <p className="font-display font-extrabold text-3xl text-foreground mb-6">${product.price.toFixed(2)}</p>
+            <p className="text-muted-foreground leading-relaxed mb-8">{product.description}</p>
+            {product.variants && product.variants.length > 0 && (
+              <div className="mb-6">
+                <label className="text-sm font-medium text-foreground mb-2 block">Size / Option</label>
+                <div className="flex flex-wrap gap-2">
+                  {product.variants.map((v) => (
+                    <button key={v} onClick={() => setSelectedVariant(v)} className={`px-4 py-2 text-sm rounded-lg border transition-all ${selectedVariant === v ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:border-foreground/30"}`}>{v}</button>
+                  ))}
+                </div>
+              </div>
             )}
-
-            <h1
-              className="font-display font-extrabold uppercase text-foreground leading-[1.1] mb-3"
-              style={{ fontSize: "clamp(1.6rem, 3vw, 2.5rem)", letterSpacing: "0.04em" }}
-            >
-              {product.name}
-            </h1>
-
-            <p className="text-xs text-muted-foreground mb-2">{product.shortDescription}</p>
-
-            <p className="font-display text-2xl font-bold text-neon-pink mb-6">
-              ${product.price.toFixed(2)}
-            </p>
-
-            <p className="text-sm text-muted-foreground leading-[1.8] mb-8">
-              {product.description}
-            </p>
-
-            <button
-              onClick={() => addToCart(product)}
-              className="w-full sm:w-auto px-10 py-3.5 bg-neon-pink text-primary-foreground text-xs tracking-[0.2em] uppercase font-medium hover:shadow-[0_0_30px_hsl(var(--neon-pink)/0.3)] transition-all duration-300 mb-10"
-            >
-              Add to Cart
-            </button>
-
-            {/* Info */}
-            <div className="space-y-6 border-t border-border/15 pt-8">
-              <div>
-                <h3 className="font-display font-semibold text-foreground text-xs tracking-[0.1em] uppercase mb-2">Dosage</h3>
-                <p className="text-sm text-muted-foreground">{product.dosage}</p>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 bg-secondary rounded-lg px-3 py-2">
+                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="text-foreground hover:text-primary transition-colors"><Minus className="w-4 h-4" /></button>
+                <span className="w-8 text-center font-medium text-foreground">{quantity}</span>
+                <button onClick={() => setQuantity(quantity + 1)} className="text-foreground hover:text-primary transition-colors"><Plus className="w-4 h-4" /></button>
               </div>
-              <div>
-                <h3 className="font-display font-semibold text-foreground text-xs tracking-[0.1em] uppercase mb-2">Ingredients</h3>
-                <p className="text-sm text-muted-foreground">{product.ingredients}</p>
-              </div>
-              <div className="flex items-center gap-6 pt-2">
-                <div className="flex items-center gap-2">
-                  <FlaskConical className="w-4 h-4 text-neon-teal" />
-                  <span className="text-xs text-muted-foreground">Lab Tested</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-neon-teal" />
-                  <span className="text-xs text-muted-foreground">COA Available</span>
-                </div>
-              </div>
+              <Button size="lg" className="flex-1 rounded-lg" onClick={handleAddToCart}><ShoppingBag className="w-4 h-4 mr-2" /> Add to Cart</Button>
             </div>
           </motion.div>
         </div>
-
-        {/* Technology benefits */}
-        <div className="mt-20 border-t border-border/10 pt-16">
-          <div className="hr-accent mb-5" />
-          <h2 className="font-display font-bold text-foreground text-lg tracking-[0.06em] uppercase mb-8">
-            TiME INFUSION® Technology
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              { icon: Zap, title: "5–15 Min Onset", desc: "Molecular encapsulation enables rapid sublingual absorption." },
-              { icon: Clock, title: "Predictable Timing", desc: "Consistent onset and offset for a controllable experience." },
-              { icon: Droplets, title: "Better Absorption", desc: "Hydrophilic cannabinoids with 18–22% bioavailability." },
-            ].map((b, i) => (
-              <div key={i} className="border border-border/20 bg-card/30 p-6">
-                <b.icon className="w-5 h-5 text-neon-teal mb-3" />
-                <h3 className="font-display font-bold text-foreground text-xs tracking-[0.08em] uppercase mb-2">{b.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Related */}
         {related.length > 0 && (
-          <div className="mt-20 border-t border-border/10 pt-16">
-            <div className="hr-accent mb-5" />
-            <h2 className="font-display font-bold text-foreground text-lg tracking-[0.06em] uppercase mb-8">
-              Related Products
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {related.map((p) => (
-                <Link
-                  key={p.id}
-                  to={`/product/${p.id}`}
-                  className="group border border-border/30 bg-card/40 hover:border-border/50 transition-all duration-500"
-                >
-                  <div className="aspect-[4/3] bg-secondary/50 flex items-center justify-center">
-                    <span className="font-display text-xs font-bold uppercase tracking-[0.2em] text-foreground/15">
-                      {p.name.split(" ").slice(0, 2).join(" ")}
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-display font-bold text-foreground text-sm tracking-[0.05em] mb-1">{p.name}</h3>
-                    <span className="font-display font-bold text-foreground text-sm">${p.price.toFixed(2)}</span>
-                  </div>
-                </Link>
-              ))}
+          <div>
+            <h2 className="font-display font-extrabold text-2xl text-foreground mb-8">You Might Also Like</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {related.map((p, i) => (<ProductCard key={p.id} product={p} index={i} />))}
             </div>
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

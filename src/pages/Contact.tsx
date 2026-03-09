@@ -1,119 +1,40 @@
 import { useState } from "react";
+import { Send, MapPin, Mail as MailIcon, Phone } from "lucide-react";
 import { motion } from "framer-motion";
-import { Mail, MapPin } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (form.name.trim() && form.email.trim() && form.message.trim()) {
-      setSubmitted(true);
-    }
-  };
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); toast.success("Message sent! We'll get back to you soon."); setForm({ name: "", email: "", subject: "", message: "" }); };
+  const update = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setForm({ ...form, [field]: e.target.value });
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className="pt-28 pb-16 max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease }}
-          >
-            <h1
-              className="font-display font-extrabold uppercase text-foreground leading-[1.05] mb-6"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", letterSpacing: "0.06em" }}
-            >
-              Get In Touch
-            </h1>
-            <p className="text-base text-muted-foreground leading-[1.8] mb-10 max-w-md">
-              Have questions about our products, compliance, or wholesale inquiries? We'd love to hear from you.
-            </p>
-
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <Mail className="w-4 h-4 text-neon-teal mt-1" />
-                <div>
-                  <h3 className="font-display font-semibold text-foreground text-xs tracking-[0.1em] uppercase mb-1">Email</h3>
-                  <p className="text-sm text-muted-foreground">hello@entourage.com</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <MapPin className="w-4 h-4 text-neon-teal mt-1" />
-                <div>
-                  <h3 className="font-display font-semibold text-foreground text-xs tracking-[0.1em] uppercase mb-1">Location</h3>
-                  <p className="text-sm text-muted-foreground">Austin, TX</p>
-                </div>
-              </div>
+    <div className="pt-24 pb-16">
+      <div className="section-container">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-12">
+          <h1 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-3">Get in Touch</h1>
+          <p className="text-muted-foreground max-w-lg">Questions about an order, wholesale inquiries, or just want to say hi?</p>
+        </motion.div>
+        <div className="grid lg:grid-cols-2 gap-12">
+          <motion.form initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} onSubmit={handleSubmit} className="space-y-5">
+            <div className="grid grid-cols-2 gap-4">
+              <div><label className="text-sm font-medium text-foreground mb-1.5 block">Name</label><input type="text" value={form.name} onChange={update("name")} required className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
+              <div><label className="text-sm font-medium text-foreground mb-1.5 block">Email</label><input type="email" value={form.email} onChange={update("email")} required className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
             </div>
-          </motion.div>
-
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease }}
-          >
-            {submitted ? (
-              <div className="border border-border/20 bg-card/40 p-10 text-center">
-                <p className="text-neon-teal font-display font-bold text-lg mb-2">Message Sent!</p>
-                <p className="text-sm text-muted-foreground">We'll get back to you within 24 hours.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-2">Name</label>
-                  <input
-                    type="text"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-secondary border border-border/30 text-foreground text-sm placeholder:text-muted-foreground/40 focus:outline-none focus:border-neon-pink/50 transition-colors"
-                    required
-                    maxLength={100}
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-2">Email</label>
-                  <input
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-secondary border border-border/30 text-foreground text-sm placeholder:text-muted-foreground/40 focus:outline-none focus:border-neon-pink/50 transition-colors"
-                    required
-                    maxLength={255}
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-2">Message</label>
-                  <textarea
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    rows={5}
-                    className="w-full px-4 py-3 bg-secondary border border-border/30 text-foreground text-sm placeholder:text-muted-foreground/40 focus:outline-none focus:border-neon-pink/50 transition-colors resize-none"
-                    required
-                    maxLength={1000}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="px-8 py-3.5 bg-neon-pink text-primary-foreground text-xs tracking-[0.2em] uppercase font-medium hover:shadow-[0_0_20px_hsl(var(--neon-pink)/0.3)] transition-all duration-300"
-                >
-                  Send Message
-                </button>
-              </form>
-            )}
+            <div><label className="text-sm font-medium text-foreground mb-1.5 block">Subject</label><select value={form.subject} onChange={update("subject")} required className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"><option value="">Select a topic</option><option value="order">Order Inquiry</option><option value="wholesale">Wholesale</option><option value="feedback">Feedback</option><option value="other">Other</option></select></div>
+            <div><label className="text-sm font-medium text-foreground mb-1.5 block">Message</label><textarea value={form.message} onChange={update("message")} required rows={5} className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none" /></div>
+            <Button type="submit" size="lg" className="rounded-lg">Send Message <Send className="ml-2 w-4 h-4" /></Button>
+          </motion.form>
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="space-y-6">
+            <div className="aspect-[4/3] rounded-xl bg-card border border-border flex items-center justify-center"><div className="text-center"><MapPin className="w-8 h-8 text-primary/30 mx-auto mb-2" /><p className="text-sm text-muted-foreground">Map placeholder</p></div></div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-5 rounded-xl bg-card border border-border"><MailIcon className="w-5 h-5 text-primary mb-2" /><p className="text-sm font-medium text-foreground">Email</p><p className="text-xs text-muted-foreground mt-1">hello@ember.co</p></div>
+              <div className="p-5 rounded-xl bg-card border border-border"><Phone className="w-5 h-5 text-primary mb-2" /><p className="text-sm font-medium text-foreground">Phone</p><p className="text-xs text-muted-foreground mt-1">(555) 123-4567</p></div>
+            </div>
           </motion.div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -1,57 +1,49 @@
 import { Link } from "react-router-dom";
+import { Instagram, Twitter, Mail } from "lucide-react";
 
-const Footer = () => {
-  return (
-    <footer className="border-t border-border/15 py-14 md:py-16">
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
-          <div>
-            <Link to="/" className="font-display text-xs font-bold tracking-[0.4em] uppercase text-foreground">
-              Azuca
-            </Link>
-            <p className="text-xs text-muted-foreground leading-relaxed mt-4 max-w-[200px]">
-              TiME INFUSION® — the breakthrough molecular encapsulation technology powering next-generation cannabis products.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-[10px] tracking-[0.25em] uppercase text-foreground font-semibold mb-4">Technology</h4>
-            <div className="flex flex-col gap-2.5">
-              <Link to="/about" className="text-xs text-muted-foreground hover:text-foreground transition-colors">How It Works</Link>
-              <Link to="/about" className="text-xs text-muted-foreground hover:text-foreground transition-colors">The Science</Link>
-              <Link to="/shop" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Product Formats</Link>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="text-[10px] tracking-[0.25em] uppercase text-foreground font-semibold mb-4">Company</h4>
-            <div className="flex flex-col gap-2.5">
-              <Link to="/about" className="text-xs text-muted-foreground hover:text-foreground transition-colors">About Azuca</Link>
-              <Link to="/blog" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
-              <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="text-[10px] tracking-[0.25em] uppercase text-foreground font-semibold mb-4">Partners</h4>
-            <div className="flex flex-col gap-2.5">
-              <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Become a Partner</Link>
-              <a href="mailto:partnerships@azucatime.com" className="text-xs text-muted-foreground hover:text-foreground transition-colors">partnerships@azucatime.com</a>
-            </div>
+const Footer = () => (
+  <footer className="bg-card border-t border-border">
+    <div className="section-container py-16">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div>
+          <Link to="/" className="font-display font-extrabold text-lg text-foreground">EMBER</Link>
+          <p className="text-sm text-muted-foreground mt-3 leading-relaxed">Premium artisan coffee & tea. Ethically sourced, expertly roasted, delivered fresh.</p>
+          <div className="flex gap-3 mt-5">
+            <a href="#" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram"><Instagram className="w-4 h-4" /></a>
+            <a href="#" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter"><Twitter className="w-4 h-4" /></a>
+            <a href="mailto:hello@ember.co" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Email"><Mail className="w-4 h-4" /></a>
           </div>
         </div>
-
-        <div className="border-t border-border/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[10px] text-muted-foreground/40 tracking-[0.15em] uppercase">
-            © 2026 Azuca. All rights reserved. TiME INFUSION® is a registered trademark.
-          </p>
-          <p className="text-[9px] text-muted-foreground/30 leading-relaxed max-w-md text-center md:text-right">
-            These statements have not been evaluated by the FDA. Products are not intended to diagnose, treat, cure, or prevent any disease.
-          </p>
+        <div>
+          <h4 className="font-display font-bold text-sm text-foreground mb-4">Navigate</h4>
+          <ul className="space-y-2.5">
+            {[["Home","/"],["Shop","/shop"],["Blog","/blog"],["Contact","/contact"]].map(([l,h])=>(
+              <li key={l}><Link to={h} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{l}</Link></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-display font-bold text-sm text-foreground mb-4">Categories</h4>
+          <ul className="space-y-2.5">
+            {["Coffee","Tea","Accessories"].map(c=>(
+              <li key={c}><Link to={`/shop?category=${c.toLowerCase()}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{c}</Link></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-display font-bold text-sm text-foreground mb-4">Legal</h4>
+          <ul className="space-y-2.5">
+            {["Privacy Policy","Terms of Service","Shipping Policy","Return Policy"].map(i=>(
+              <li key={i}><a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{i}</a></li>
+            ))}
+          </ul>
         </div>
       </div>
-    </footer>
-  );
-};
+      <div className="mt-12 pt-6 border-t border-border text-center">
+        <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} EMBER. All rights reserved. This is a demo store — no real transactions.</p>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;
