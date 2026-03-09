@@ -6,6 +6,7 @@ export interface BlogPost {
   date: string;
   readTime: string;
   author: string;
+  image?: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -17,6 +18,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-03-01",
     readTime: "5 min",
     author: "Azuca Team",
+    image: "/images/blog-time-infusion.jpg",
   },
   {
     id: "delta-9-vs-11-hydroxy",
@@ -26,6 +28,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-02-22",
     readTime: "6 min",
     author: "Azuca Team",
+    image: "/images/blog-delta9.jpg",
   },
   {
     id: "social-consumption-revolution",
@@ -35,6 +38,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-02-15",
     readTime: "4 min",
     author: "Azuca Team",
+    image: "/images/blog-social.jpg",
   },
   {
     id: "edibles-problem-solved",
