@@ -12,20 +12,23 @@ const HeroSection = () => (
         {/* Left — text */}
         <div className="w-full lg:w-[47%] shrink-0">
           <motion.span initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium tracking-wider uppercase mb-6">
-            Fast-Acting · Water-Friendly · Precision Dosing
+            Fast-Acting · Water-Soluble · Precision Dosing
           </motion.span>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-display font-extrabold text-foreground leading-[0.95] tracking-tight mb-6" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.2rem)" }}>
             It's About<br /><span className="text-primary">TiME INFUSION®</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-lg text-muted-foreground leading-relaxed mb-3 max-w-lg">
-            The molecular encapsulation technology that makes cannabis products fast-acting, predictable, and better tasting.
+          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.15 }} className="text-xl text-foreground/90 font-medium leading-snug mb-3 max-w-lg">
+            The molecular encapsulation technology powering the next generation of cannabis products.
           </motion.p>
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }} className="text-base text-primary font-medium mb-8 max-w-lg">
-            Feel the effects in 5–15 minutes instead of 90.
+          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-base text-muted-foreground leading-relaxed mb-3 max-w-lg">
+            Fast-acting, predictable, and better-tasting ingredients for edibles, beverages, and infused products.
+          </motion.p>
+          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }} className="text-base font-medium mb-8 max-w-lg">
+            Feel the effects in <span className="text-primary">5–15 minutes</span>, not 90.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-wrap gap-4">
-            <Button size="lg" className="rounded-lg font-medium" asChild><Link to="/blog">Explore the Science <ArrowRight className="ml-2 w-4 h-4" /></Link></Button>
-            <Button size="lg" variant="outline" className="rounded-lg font-medium" asChild><Link to="/shop">Shop Products</Link></Button>
+            <Button size="lg" className="rounded-lg font-medium" asChild><Link to="/blog">Explore the Technology <ArrowRight className="ml-2 w-4 h-4" /></Link></Button>
+            <Button size="lg" variant="outline" className="rounded-lg font-medium" asChild><Link to="/shop">View Product Formats</Link></Button>
           </motion.div>
         </div>
 
