@@ -44,6 +44,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 143,
     variants: ["5mg × 10pc", "10mg × 10pc"],
+    image: "/images/berry-burst-gummies.jpg",
   },
   {
     id: "citrus-sunrise-gummies",
@@ -69,6 +70,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 98,
     variants: ["5mg × 10pc", "10mg × 10pc"],
+    image: "/images/watermelon-gummies.jpg",
   },
   {
     id: "mango-passion-gummies",
@@ -80,6 +82,7 @@ export const products: Product[] = [
     rating: 4.8,
     reviewCount: 76,
     variants: ["5mg × 10pc", "10mg × 10pc"],
+    image: "/images/mango-passion-gummies.jpg",
   },
   {
     id: "sparkling-lemon-seltzer",
@@ -105,6 +108,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 89,
     variants: ["5mg × 1", "5mg × 4-pack"],
+    image: "/images/berry-hibiscus-tonic.jpg",
   },
   {
     id: "grapefruit-sparkling",
@@ -116,6 +120,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 67,
     variants: ["2.5mg × 1", "5mg × 1", "5mg × 4-pack"],
+    image: "/images/grapefruit-sparkling.jpg",
   },
   {
     id: "peach-mango-elixir",
@@ -128,6 +133,7 @@ export const products: Product[] = [
     reviewCount: 54,
     badge: "Premium",
     variants: ["5mg × 1", "10mg × 1"],
+    image: "/images/peach-mango-elixir.jpg",
   },
   {
     id: "dark-chocolate-bar",
@@ -153,6 +159,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 112,
     variants: ["5mg × 8pc", "10mg × 8pc"],
+    image: "/images/milk-chocolate-caramel.jpg",
   },
   {
     id: "white-chocolate-raspberry",
@@ -165,6 +172,7 @@ export const products: Product[] = [
     reviewCount: 87,
     badge: "Limited",
     variants: ["5mg × 8pc"],
+    image: "/images/white-chocolate-raspberry.jpg",
   },
   {
     id: "hazelnut-praline-truffle",
@@ -176,6 +184,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviewCount: 64,
     variants: ["5mg × 6pc", "10mg × 6pc"],
+    image: "/images/hazelnut-praline-truffles.jpg",
   },
   {
     id: "mint-dark-chocolate",
@@ -187,6 +196,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 93,
     variants: ["5mg × 8pc", "10mg × 8pc"],
+    image: "/images/mint-dark-chocolate.jpg",
   },
 ];
 
