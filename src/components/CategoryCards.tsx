@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Candy, Wine, Chocolate } from "lucide-react";
+import { Candy, Wine, Cookie } from "lucide-react";
 import { motion } from "framer-motion";
 import { categories } from "@/data/products";
 
-const icons = { gummies: Candy, beverages: Wine, chocolates: Chocolate };
+const icons = { gummies: Candy, beverages: Wine, chocolates: Cookie };
 
 const CategoryCards = () => (
   <section className="section-container py-20">
