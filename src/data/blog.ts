@@ -18,6 +18,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-03-01",
     readTime: "5 min",
     author: "Azuca Team",
+    image: "/images/blog-time-infusion.jpg",
   },
   {
     id: "delta-9-vs-11-hydroxy",
