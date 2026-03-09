@@ -44,6 +44,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 143,
     variants: ["5mg × 10pc", "10mg × 10pc"],
+    image: "/images/berry-burst-gummies.jpg",
   },
   {
     id: "citrus-sunrise-gummies",
