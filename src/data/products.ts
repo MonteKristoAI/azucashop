@@ -70,6 +70,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 98,
     variants: ["5mg × 10pc", "10mg × 10pc"],
+    image: "/images/watermelon-gummies.jpg",
   },
   {
     id: "mango-passion-gummies",
