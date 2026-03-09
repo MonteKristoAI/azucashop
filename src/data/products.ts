@@ -133,6 +133,7 @@ export const products: Product[] = [
     reviewCount: 54,
     badge: "Premium",
     variants: ["5mg × 1", "10mg × 1"],
+    image: "/images/peach-mango-elixir.jpg",
   },
   {
     id: "dark-chocolate-bar",
