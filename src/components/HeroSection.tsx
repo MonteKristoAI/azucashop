@@ -78,8 +78,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.1, ease }}
-          className="text-muted-foreground/35 text-[11px] md:text-xs tracking-[0.2em] mt-5 max-w-[260px] mx-auto leading-[2]"
-          style={{ fontStyle: "italic" }}
+          className="text-foreground/25 text-xs md:text-sm tracking-[0.15em] mt-6 md:mt-8 max-w-[300px] mx-auto leading-[1.9]"
         >
           Feel it in minutes. Share the moment.
         </motion.p>
