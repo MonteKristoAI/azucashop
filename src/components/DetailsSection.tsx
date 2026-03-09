@@ -1,35 +1,27 @@
 import { motion } from "framer-motion";
 
-const statements = [
-  "Fast-Acting",
-  "Predictable Effects",
-  "Great Taste",
-  "Social Experience",
-];
+const statements = ["Fast-Acting", "Predictable", "Social", "Elevated"];
 
 const DetailsSection = () => {
   return (
-    <section className="section-spacing border-t border-border/50">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
-          {statements.map((statement, i) => (
-            <motion.div
-              key={statement}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="flex items-center gap-6"
+    <section className="py-24 md:py-32 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
+        {statements.map((statement, i) => (
+          <motion.div
+            key={statement}
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 1, delay: i * 0.08, ease: [0.25, 0.1, 0, 1] }}
+            className="border-b border-border/20 py-6 md:py-8 group cursor-default"
+          >
+            <h3 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-extrabold uppercase text-foreground/10 group-hover:text-foreground transition-colors duration-700 leading-none"
+              style={{ letterSpacing: "0.08em" }}
             >
-              <span className="text-muted-foreground/30 font-display text-lg tracking-widest">
-                0{i + 1}
-              </span>
-              <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase text-foreground">
-                {statement}
-              </h3>
-            </motion.div>
-          ))}
-        </div>
+              {statement}
+            </h3>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

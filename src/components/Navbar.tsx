@@ -3,13 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const links = ["Products", "Technology", "Experience", "About"];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="font-display text-xl font-bold tracking-[0.3em] uppercase text-foreground">
+    <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 py-6 flex items-center justify-between">
+        <a href="#" className="font-display text-sm font-bold tracking-[0.4em] uppercase text-white">
           Entourage
         </a>
 
@@ -19,7 +18,7 @@ const Navbar = () => {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+              className="text-[11px] tracking-[0.25em] uppercase text-white/50 hover:text-white transition-colors duration-500"
             >
               {link}
             </a>
@@ -29,13 +28,13 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-foreground"
+          className="md:hidden text-white"
           aria-label="Toggle menu"
         >
           <div className="w-6 flex flex-col gap-1.5">
-            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
-            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-px bg-foreground transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""}`} />
+            <span className={`block h-px bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
+            <span className={`block h-px bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-px bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""}`} />
           </div>
         </button>
       </div>
@@ -44,21 +43,36 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b border-border"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 bg-background z-40 flex items-center justify-center mix-blend-normal"
           >
-            <div className="px-6 py-6 flex flex-col gap-6">
-              {links.map((link) => (
-                <a
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-8 text-foreground"
+              aria-label="Close menu"
+            >
+              <div className="w-6 flex flex-col gap-1.5">
+                <span className="block h-px bg-foreground rotate-45 translate-y-[4px]" />
+                <span className="block h-px bg-foreground opacity-0" />
+                <span className="block h-px bg-foreground -rotate-45 -translate-y-[4px]" />
+              </div>
+            </button>
+            <div className="flex flex-col items-center gap-10">
+              {links.map((link, i) => (
+                <motion.a
                   key={link}
                   href={`#${link.toLowerCase()}`}
                   onClick={() => setIsOpen(false)}
-                  className="text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="font-display text-3xl tracking-[0.2em] uppercase text-foreground hover:text-accent transition-colors duration-300"
                 >
                   {link}
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
