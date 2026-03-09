@@ -82,6 +82,7 @@ export const products: Product[] = [
     rating: 4.8,
     reviewCount: 76,
     variants: ["5mg × 10pc", "10mg × 10pc"],
+    image: "/images/mango-passion-gummies.jpg",
   },
   {
     id: "sparkling-lemon-seltzer",
