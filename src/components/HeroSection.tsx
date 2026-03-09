@@ -56,10 +56,10 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 80, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.6, ease }}
-          className="font-display font-extrabold uppercase text-foreground leading-[0.82] mx-auto"
+          className="font-display font-extrabold uppercase text-foreground leading-[0.85] mx-auto"
           style={{
-            fontSize: "clamp(3rem, 9.5vw, 8.5rem)",
-            letterSpacing: "0.22em",
+            fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
+            letterSpacing: "0.25em",
           }}
         >
           Entourage
