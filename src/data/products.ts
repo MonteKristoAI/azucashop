@@ -196,6 +196,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 93,
     variants: ["5mg × 8pc", "10mg × 8pc"],
+    image: "/images/mint-dark-chocolate.jpg",
   },
 ];
 
