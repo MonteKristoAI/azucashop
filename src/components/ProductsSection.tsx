@@ -83,8 +83,8 @@ const ProductsSection = () => {
                   <h3
                     className={`font-display font-extrabold uppercase ${product.colorClass} ${product.textGlow} leading-none w-full`}
                     style={{
-                      fontSize: "clamp(1.75rem, 2.8vw, 2.8rem)",
-                      letterSpacing: "0.18em",
+                      fontSize: "clamp(1.3rem, 1.8vw, 1.8rem)",
+                      letterSpacing: "0.25em",
                     }}
                   >
                     {product.name}
