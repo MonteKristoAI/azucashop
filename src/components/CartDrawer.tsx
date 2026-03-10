@@ -28,8 +28,12 @@ const CartDrawer = () => {
             <div className="flex-1 overflow-y-auto -mx-6 px-6 space-y-4 mt-4">
               {items.map((item) => (
                 <div key={item.product.id} className="flex gap-4 p-3 rounded-lg bg-secondary/50">
-                  <div className="w-16 h-16 rounded-md bg-muted flex items-center justify-center shrink-0">
-                    <span className="text-xs font-display font-bold text-muted-foreground uppercase">{item.product.category.slice(0,3)}</span>
+                  <div className="w-16 h-16 rounded-md bg-muted flex items-center justify-center shrink-0 overflow-hidden">
+                    {item.product.image ? (
+                      <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="text-xs font-display font-bold text-muted-foreground uppercase">{item.product.category.slice(0,3)}</span>
+                    )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2">
