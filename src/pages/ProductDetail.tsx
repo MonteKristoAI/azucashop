@@ -44,18 +44,15 @@ const ProductDetail = () => {
           <ArrowLeft className="w-4 h-4" /> Back to Shop
         </Link>
         <div className="grid lg:grid-cols-2 gap-12 mb-20">
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className={`aspect-square rounded-2xl bg-gradient-to-br ${categoryColors[product.category]} border border-border flex items-center justify-center`}>
-            <span className="font-display text-4xl font-extrabold uppercase tracking-wider text-foreground/10 text-center px-8">{product.name}</span>
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className={`aspect-square rounded-2xl bg-gradient-to-br ${categoryColors[product.category]} border border-border flex items-center justify-center overflow-hidden`}>
+            {product.image ? (
+              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+            ) : (
+              <span className="font-display text-4xl font-extrabold uppercase tracking-wider text-foreground/10 text-center px-8">{product.name}</span>
+            )}
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex flex-col justify-center">
-            {product.badge && <span className="inline-block w-fit px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-md mb-4">{product.badge}</span>}
-            <h1 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-2">{product.name}</h1>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (<Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? "fill-primary text-primary" : "text-muted-foreground/20"}`} />))}
-              </div>
-              <span className="text-sm text-muted-foreground">{product.rating} ({product.reviewCount} reviews)</span>
-            </div>
+            <h1 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-4">{product.name}</h1>
             <p className="font-display font-extrabold text-3xl text-foreground mb-6">${product.price.toFixed(2)}</p>
             <p className="text-muted-foreground leading-relaxed mb-8">{product.description}</p>
             {product.variants && product.variants.length > 0 && (
