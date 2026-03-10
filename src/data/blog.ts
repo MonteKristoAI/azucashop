@@ -48,6 +48,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-02-08",
     readTime: "5 min",
     author: "Azuca Team",
+    image: "/images/blog-edibles-problem.jpg",
   },
   {
     id: "bioavailability-explained",
