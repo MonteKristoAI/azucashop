@@ -68,5 +68,6 @@ export const blogPosts: BlogPost[] = [
     date: "2026-01-20",
     readTime: "7 min",
     author: "Azuca Team",
+    image: "/images/blog-beginners-guide.jpg",
   },
 ];
