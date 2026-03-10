@@ -58,6 +58,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-01-28",
     readTime: "4 min",
     author: "Azuca Team",
+    image: "/images/blog-bioavailability.jpg",
   },
   {
     id: "fast-acting-edibles-guide",
