@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Star, MessageSquarePlus, X } from "lucide-react";
+import { useState, useRef, useCallback } from "react";
+import { Star, MessageSquarePlus, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { reviews as initialReviews } from "@/data/products";
 import { Button } from "@/components/ui/button";
+import useEmblaCarousel from "embla-carousel-react";
 
 const CustomerReviews = () => {
   const [showForm, setShowForm] = useState(false);
@@ -14,6 +15,16 @@ const CustomerReviews = () => {
   const [extraReviews, setExtraReviews] = useState<typeof initialReviews>([]);
 
   const allReviews = [...initialReviews, ...extraReviews];
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    slidesToScroll: 1,
+    containScroll: "trimSnaps",
+  });
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,15 +42,60 @@ const CustomerReviews = () => {
       <div className="section-container py-20">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-3">What People Are Saying</h2>
-          <p className="text-muted-foreground max-w-md mx-auto mb-6">Real experiences from consumers who made the switch to TiME INFUSION®.</p>
+          <p className="text-muted-foreground max-w-md mx-auto">Real experiences from consumers who made the switch to TiME INFUSION®.</p>
+        </motion.div>
+
+        {/* Carousel */}
+        <div className="relative mb-10">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6">
+              {allReviews.map((review, i) => (
+                <div
+                  key={review.name + i}
+                  className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)]"
+                >
+                  <div className="p-6 rounded-xl bg-background border border-border h-full flex flex-col">
+                    <div className="flex gap-0.5 mb-3">
+                      {Array.from({ length: 5 }).map((_, j) => (
+                        <Star key={j} className={`w-4 h-4 ${j < review.rating ? "fill-primary text-primary" : "text-muted-foreground/20"}`} />
+                      ))}
+                    </div>
+                    <p className="text-sm text-foreground leading-relaxed mb-4 flex-1">"{review.text}"</p>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">{review.name}</p>
+                      <p className="text-xs text-muted-foreground">{review.product}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation arrows */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all shadow-lg z-10"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all shadow-lg z-10"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Leave a Review button at bottom */}
+        <div className="text-center">
           <Button onClick={() => setShowForm(true)} className="gap-2">
             <MessageSquarePlus className="w-4 h-4" /> Leave a Review
           </Button>
-        </motion.div>
+        </div>
 
         <AnimatePresence>
           {showForm && (
-            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden mb-10">
+            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden mt-10">
               <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6 rounded-xl bg-background border border-border space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-display font-bold text-foreground">Write Your Review</h3>
@@ -60,19 +116,6 @@ const CustomerReviews = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allReviews.map((review, i) => (
-            <motion.div key={review.name + i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }} className="p-6 rounded-xl bg-background border border-border">
-              <div className="flex gap-0.5 mb-3">
-                {Array.from({ length: 5 }).map((_, j) => (<Star key={j} className={`w-4 h-4 ${j < review.rating ? "fill-primary text-primary" : "text-muted-foreground/20"}`} />))}
-              </div>
-              <p className="text-sm text-foreground leading-relaxed mb-4">"{review.text}"</p>
-              <p className="text-sm font-medium text-foreground">{review.name}</p>
-              <p className="text-xs text-muted-foreground">{review.product}</p>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
