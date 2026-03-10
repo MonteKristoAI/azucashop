@@ -27,7 +27,19 @@ const Contact = () => {
             <Button type="submit" size="lg" className="rounded-lg">Send Message <Send className="ml-2 w-4 h-4" /></Button>
           </motion.form>
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="space-y-6">
-            <div className="aspect-[4/3] rounded-xl bg-card border border-border flex items-center justify-center"><div className="text-center"><MapPin className="w-8 h-8 text-primary/30 mx-auto mb-2" /><p className="text-sm text-muted-foreground">Map placeholder</p></div></div>
+            <div className="aspect-[4/3] rounded-xl bg-card border border-border overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30591910525!2d-74.25986432970718!3d40.697149413541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1710000000000"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Azuca Location - New York"
+                className="w-full h-full"
+              />
+            </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-5 rounded-xl bg-card border border-border"><MailIcon className="w-5 h-5 text-primary mb-2" /><p className="text-sm font-medium text-foreground">Email</p><p className="text-xs text-muted-foreground mt-1">partnerships@azucatime.com</p></div>
               <div className="p-5 rounded-xl bg-card border border-border"><Phone className="w-5 h-5 text-primary mb-2" /><p className="text-sm font-medium text-foreground">Phone</p><p className="text-xs text-muted-foreground mt-1">(555) 123-4567</p></div>
