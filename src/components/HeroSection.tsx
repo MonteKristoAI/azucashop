@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroScience from "@/assets/hero-science.png";
+import heroGummies from "@/assets/hero-gummies.jpg";
 
 const HeroSection = () => (
   <section className="relative min-h-[75vh] flex items-center overflow-hidden">
