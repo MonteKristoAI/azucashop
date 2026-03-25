@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-12">
         <div>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-2">Featured Products</h2>
-          <p className="text-muted-foreground">Fast-acting favorites powered by TiME INFUSION® technology.</p>
+          <p className="text-muted-foreground"><p className="text-muted-foreground">Our most-loved gummies and treats.</p></p>
         </div>
         <Button variant="ghost" className="text-primary hover:text-primary" asChild><Link to="/shop">View All <ArrowRight className="ml-1 w-4 h-4" /></Link></Button>
       </motion.div>

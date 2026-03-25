@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
           <Link to="/" className="font-display font-extrabold text-lg text-foreground">AZUCA</Link>
-          <p className="text-sm text-muted-foreground mt-3 leading-relaxed">Fast-acting cannabis products powered by TiME INFUSION® technology. Effects in 5–15 minutes.</p>
+          <p className="text-sm text-muted-foreground mt-3 leading-relaxed"><p className="text-sm text-muted-foreground mt-3 leading-relaxed">Premium cannabis gummies crafted for a social, consistent, and enjoyable experience.</p></p>
           <div className="flex gap-3 mt-5">
             <a href="#" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram"><Instagram className="w-4 h-4" /></a>
             <a href="#" className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter"><Twitter className="w-4 h-4" /></a>

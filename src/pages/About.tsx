@@ -27,13 +27,14 @@ const About = () => {
             className="font-display font-extrabold uppercase text-foreground leading-[1.05] mb-6"
             style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", letterSpacing: "0.06em" }}
           >
-            About <span className="text-neon-pink">Entourage</span>
+            About <span className="text-neon-pink">AZUCA</span>
           </h1>
+          <p className="text-lg text-primary font-medium mb-5">A better kind of gummy experience.</p>
           <p className="text-base text-muted-foreground leading-[1.8] mb-5">
-            We started Entourage with a simple belief: hemp wellness should be accessible, transparent, and enjoyable. Every product we create is designed with precision — from the formulation to the experience.
+            We started AZUCA with a simple belief: cannabis edibles should be enjoyable, social, and predictable. No more guessing when it'll kick in, no more couch-lock, no more bitter taste. Just a consistently great experience you can share with friends.
           </p>
           <p className="text-base text-muted-foreground leading-[1.8]">
-            Our team combines expertise in cannabinoid science with a commitment to compliance and quality. We believe that trust is earned through transparency — which is why every batch comes with full lab reports and a Certificate of Analysis.
+            Our gummies combine a full-spectrum entourage formulation — THC, CBD, and terpenes working together — with TiME INFUSION® for fast, reliable effects in 5–15 minutes. The result is an uplifting, clear-headed experience that's closer to smoking than any traditional edible, without inhaling a thing.
           </p>
         </motion.div>
 
@@ -73,7 +74,7 @@ const About = () => {
             Our Commitment
           </h2>
           <p className="text-base text-muted-foreground leading-[1.8]">
-            We are committed to creating products that meet the highest standards of quality and compliance. Our hemp is sourced from trusted farms, processed with advanced extraction methods, and tested at every stage. We don't cut corners — because your wellness matters.
+            We are committed to creating gummies that meet the highest standards of quality and taste. Our hemp is sourced from trusted farms, crafted with care, and tested at every stage. Every AZUCA product delivers the same great experience — because consistency is what makes a brand worth trusting.
           </p>
         </motion.div>
       </div>
