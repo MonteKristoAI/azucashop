@@ -10,28 +10,28 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const faqs = [
   {
-    q: "How long will these take to work?",
-    a: "Products made with TiME INFUSION® typically deliver first effects within 5–15 minutes, compared to 30–90+ minutes for traditional edibles. Hydrophilic cannabinoids absorb through soft tissues, bypassing the slow digestive pathway.",
+    q: "How quickly will I feel the effects?",
+    a: "AZUCA gummies typically kick in within 5–15 minutes — way faster than traditional edibles that can take 60–90 minutes. Our TiME INFUSION® delivery system helps your body absorb cannabinoids quickly so you're not left guessing.",
   },
   {
     q: "How strong will the effect be? How long will it last?",
-    a: "TiME INFUSION® delivers precise, easy-to-measure dosing with 18–22% bioavailability (vs 2–6% for traditional edibles). Effects are predictable with a clear onset and offset — ideal for social and sessionable consumption.",
+    a: "Each gummy delivers a precise, consistent dose so you know exactly what to expect. Effects are clear and controllable with a smooth comedown — perfect for social settings where you want to feel good without overdoing it.",
   },
   {
-    q: "Why do edibles make me so sleepy?",
-    a: "Traditional edibles convert Delta-9-THC into 11-Hydroxy-THC through liver metabolism, which produces a heavier, more sedative 'couch lock' experience. TiME INFUSION® preserves Delta-9-THC through soft tissue absorption, delivering a lighter, more euphoric sensation similar to smoking.",
+    q: "Why don't these make me sleepy like other edibles?",
+    a: "Most edibles get processed through your liver, which converts THC into a compound that causes heavy, sedating effects. AZUCA gummies are designed to preserve the original Delta-9-THC — giving you a lighter, more uplifting experience similar to smoking, without the couch-lock.",
   },
   {
-    q: "Why do edibles taste so bad?",
-    a: "Traditional edibles contain cannabinoid oils that add an acrid, bitter 'green' flavor that gets worse with higher potency. TiME INFUSION®'s unique encapsulation process creates a neutral taste profile — no unpleasant flavor from cannabis concentrates or surfactants.",
+    q: "Do these taste like cannabis?",
+    a: "Not at all. AZUCA gummies have no bitter cannabis flavor — just great-tasting fruit flavors. Our formulation process eliminates the harsh 'green' taste that plagues most edibles.",
   },
   {
-    q: "How is TiME INFUSION® different from nano-emulsion?",
-    a: "Nano-emulsion uses small globs of oil suspended in liquid. TiME INFUSION® (Thermodynamic individual Molecular Encapsulation®) individually encapsulates each cannabinoid molecule with a hydrophilic coating — not smaller oil droplets. This results in better absorption, taste, and shelf stability.",
+    q: "What's the entourage effect?",
+    a: "It's the idea that THC, CBD, and terpenes work better together than alone — creating a more balanced, full-body experience. AZUCA gummies are formulated with all three to mimic the complete cannabis experience, similar to smoking but without inhaling.",
   },
   {
-    q: "What product formats does TiME INFUSION® support?",
-    a: "TiME INFUSION® powers fast-acting gummies, cannabis beverages, chocolates, and culinary cannabis ingredients. The technology is shelf-stable, temperature-stable, and pH-stable with no seepage or crystallization, making it suitable for a wide range of product formulations.",
+    q: "What product formats are available?",
+    a: "AZUCA offers fast-acting gummies, cannabis beverages, and premium chocolates — all crafted for a social, sessionable experience with effects you can feel in minutes.",
   },
 ];
 
@@ -53,7 +53,7 @@ const FAQSection = () => {
             Questions?
           </h2>
           <p className="text-sm text-muted-foreground mt-3">
-            Everything you need to know about TiME INFUSION® technology.
+            Common questions about AZUCA gummies.
           </p>
         </motion.div>
 

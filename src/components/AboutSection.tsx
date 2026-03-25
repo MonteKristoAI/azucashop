@@ -1,11 +1,11 @@
-import { Atom, Beaker, Sparkles, Users } from "lucide-react";
+import { Zap, Sun, Leaf, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 const values = [
-  { icon: Atom, title: "TiME INFUSION®", desc: "Thermodynamic Individual Molecular Encapsulation® creates hydrophilic cannabinoids for rapid soft-tissue absorption." },
-  { icon: Beaker, title: "Delta-9-THC Preserved", desc: "Soft tissue absorption preserves Delta-9-THC, minimizing conversion to 11-Hydroxy-THC for a lighter, euphoric experience." },
-  { icon: Sparkles, title: "Premium Effects", desc: "A more uplifting sensory experience like smoking cannabis — without the intense sedation known as couch-lock." },
-  { icon: Users, title: "Social Ready", desc: "Predictable onset and offset times make TiME INFUSION® products perfect for social consumption and events." },
+  { icon: Zap, title: "Fast-Acting", desc: "Feel effects in 5–15 minutes, not an hour and a half. Enhanced with TiME INFUSION® for rapid, reliable onset." },
+  { icon: Sun, title: "Uplifting, Not Sedating", desc: "A lighter, euphoric experience — no couch-lock. Our formulation preserves the feel-good Delta-9 effects." },
+  { icon: Leaf, title: "Full-Spectrum Formulation", desc: "THC + CBD + terpenes working together for the entourage effect — a balanced, complete experience." },
+  { icon: Users, title: "Social Ready", desc: "Perfect for parties, dinners, and good times with friends. Predictable timing you can count on." },
 ];
 
 const AboutSection = () => (
@@ -18,16 +18,16 @@ const AboutSection = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mb-4">
-          The Science Behind TiME INFUSION®
+          What Makes AZUCA Different
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-6">
-          Our innovative culinary cannabis ingredients & products taste great and take effect in 5–15 minutes vs. up to 90 minutes for traditional edibles. TiME INFUSION® creates a hydrophilic coating around oil molecules so products absorb through soft tissues, preempting first-pass metabolism.
+          We craft premium cannabis gummies designed for a social, enjoyable experience — not the heavy, unpredictable edibles you're used to. Our entourage formulation combines THC, CBD, and terpenes for a balanced effect, enhanced with TiME INFUSION® so you feel it in minutes.
         </p>
         <div className="grid grid-cols-3 gap-6">
           {[
             ["5–15", "Min Onset"],
-            ["18–22%", "Bioavailability"],
-            ["Delta-9", "THC Preserved"],
+            ["THC+CBD", "Full Spectrum"],
+            ["Delta-9", "Preserved"],
           ].map(([num, label]) => (
             <div key={label}>
               <span className="font-display font-extrabold text-2xl text-primary">{num}</span>

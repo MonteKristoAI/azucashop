@@ -12,8 +12,8 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: "what-is-time-infusion",
-    title: "What Is TiME INFUSION® and How Does It Work?",
-    excerpt: "Thermodynamic Individual Molecular Encapsulation® creates hydrophilic cannabinoids that absorb through soft tissues in 5–15 minutes instead of up to 90 minutes with traditional edibles.",
+    title: "Why AZUCA Gummies Work Faster",
+    excerpt: "Most edibles take 60–90 minutes. AZUCA gummies deliver effects in 5–15 minutes thanks to TiME INFUSION® — a delivery system that helps your body absorb cannabinoids quickly through soft tissues.",
     category: "Science",
     date: "2026-03-01",
     readTime: "5 min",
@@ -22,8 +22,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "delta-9-vs-11-hydroxy",
-    title: "Delta-9-THC vs 11-Hydroxy-THC: Why It Matters",
-    excerpt: "Traditional edibles convert Delta-9-THC into 11-Hydroxy-THC through liver metabolism, creating heavier sedative effects. TiME INFUSION® preserves Delta-9 for a lighter, euphoric experience.",
+    title: "Why AZUCA Feels Uplifting, Not Sedating",
+    excerpt: "Traditional edibles get processed through your liver, creating a heavy, sleepy effect. AZUCA gummies preserve the original Delta-9-THC for a lighter, more euphoric experience — closer to smoking without the smoke.",
     category: "Education",
     date: "2026-02-22",
     readTime: "6 min",
@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "social-consumption-revolution",
     title: "The Social Consumption Revolution",
-    excerpt: "As consumption lounges enter state laws, ingestibles need predictable onset and offset times. Welcome to the new era of Happy Hour Edibles powered by TiME INFUSION®.",
+    excerpt: "Cannabis is becoming social again. With fast-acting, predictable gummies, you can enjoy cannabis at dinner parties, happy hours, and social events — just like a cocktail, but better.",
     category: "Industry",
     date: "2026-02-15",
     readTime: "4 min",
@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "edibles-problem-solved",
     title: "The Edibles Problem — And How We Solved It",
-    excerpt: "From unpredictable timing to bitter taste and inconsistent dosing, traditional edibles have long frustrated consumers. TiME INFUSION® addresses every pain point.",
+    excerpt: "Unpredictable timing, bitter taste, inconsistent dosing — traditional edibles have long frustrated consumers. AZUCA gummies address every pain point with a better formulation and faster delivery.",
     category: "Education",
     date: "2026-02-08",
     readTime: "5 min",
@@ -52,8 +52,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "bioavailability-explained",
-    title: "18–22% Bioavailability: What That Means For You",
-    excerpt: "Traditional edibles deliver just 2–6% of active ingredients. TiME INFUSION® achieves 18–22% bioavailability through hydrophilic encapsulation and soft tissue absorption.",
+    title: "Why You Feel More With Less",
+    excerpt: "Traditional edibles waste most of what you consume. AZUCA gummies deliver significantly more of the active ingredients to your body — meaning better effects from a smaller dose.",
     category: "Science",
     date: "2026-01-28",
     readTime: "4 min",
@@ -62,8 +62,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "fast-acting-edibles-guide",
-    title: "A Beginner's Guide to Fast-Acting Edibles",
-    excerpt: "New to cannabis edibles? Learn how TiME INFUSION® technology delivers predictable, manageable experiences with effects in 5–15 minutes — perfect for newcomers seeking a positive outcome.",
+    title: "A Beginner's Guide to Fast-Acting Gummies",
+    excerpt: "New to cannabis? AZUCA gummies deliver predictable, manageable experiences with effects in 5–15 minutes — perfect for newcomers who want to feel confident about what they're trying.",
     category: "Guide",
     date: "2026-01-20",
     readTime: "7 min",
