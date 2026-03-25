@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroGummies from "@/assets/hero-gummies.jpg";
 
+
 const HeroSection = () => (
   <section className="relative min-h-[75vh] flex items-center overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
